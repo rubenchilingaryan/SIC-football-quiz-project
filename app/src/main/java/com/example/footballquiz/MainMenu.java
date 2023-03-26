@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footballquiz.questions.Guess_the_player;
 import com.example.footballquiz.questions.Guess_the_price;
+import com.example.footballquiz.questions.Who_has_assisted_more;
 import com.example.footballquiz.questions.Who_has_scored_more;
 import com.example.footballquiz.questions.Who_is_faster;
 import com.example.footballquiz.questions.Who_is_more_expensive;
@@ -78,7 +79,9 @@ public class MainMenu extends AppCompatActivity {
         who_has_assisted_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainMenu.this, "This mode will be updated soon", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
+                startActivity(i);
+                finish();
             }
         });
 
