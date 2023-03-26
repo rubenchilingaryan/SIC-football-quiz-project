@@ -1,0 +1,67 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+    android:background="#40424E"
+    >
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/right_green"
+        android:text="Result"
+        android:textColor="@color/white"
+        android:textSize="29sp"
+        android:fontFamily="@font/exo_2_extrabold"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/eloTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/right_green"
+        android:textColor="@color/white"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:text="ELO"
+        android:textSize="25sp"
+        android:fontFamily="@font/exo_2_extrabold"
+        android:gravity="center"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="35dp"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/eloTextView"
+        android:layout_marginTop="35dp"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return"
+            android:textSize="20sp"
+            android:fontFamily="@font/exo_2_extrabold_italic"
+            android:background="@drawable/right_answer_background"
+            android:layout_marginRight="12dp"/>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textSize="20sp"
+            android:fontFamily="@font/exo_2_extrabold_italic"
+            android:background="@drawable/right_answer_background"
+            android:layout_marginLeft="12dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

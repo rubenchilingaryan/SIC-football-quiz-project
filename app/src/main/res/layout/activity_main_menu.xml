@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40424E"
+    tools:context=".MainMenu">
+
+    <TextView
+        android:id="@+id/tvModes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_2_extrabold"
+        android:text="Modes"
+        android:textColor="@color/orange"
+        android:textSize="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/who_is_faster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Who is faster"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@id/guideline15"
+        app:layout_constraintBottom_toTopOf="@id/guideline24"
+        android:background="@drawable/mode_buttons"
+        style="@style/mode_button"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/who_is_more_expensive"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Who is more expensive"
+        style="@style/mode_button"
+        android:background="@drawable/mode_buttons"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@id/guideline24"
+        app:layout_constraintBottom_toTopOf="@id/guideline33"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guess_the_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Guess the price"
+        style="@style/mode_button"
+        android:background="@drawable/mode_buttons"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@id/guideline33"
+        app:layout_constraintBottom_toTopOf="@id/guideline42"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guess_the_player"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Guess the player"
+        style="@style/mode_button"
+        android:background="@drawable/mode_buttons"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@id/guideline42"
+        app:layout_constraintBottom_toTopOf="@id/guideline51"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/who_has_scored_more"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Who has scored more"
+        style="@style/mode_button"
+        android:background="@drawable/mode_buttons"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@id/guideline51"
+        app:layout_constraintBottom_toTopOf="@id/guideline60"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/who_has_assisted_more"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Who has assisted more"
+        style="@style/mode_button"
+        android:background="@drawable/mode_buttons"
+        app:layout_constraintEnd_toEndOf="@id/guideline75"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintTop_toBottomOf="@+id/guideline60"
+        app:layout_constraintBottom_toTopOf="@id/guideline69"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline24"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline69"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

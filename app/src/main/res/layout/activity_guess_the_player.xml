@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40424E"
+    tools:context=".questions.Guess_the_player">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/bowlby_one"
+        android:gravity="center"
+        android:text="Guess the player"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline8_guess_the_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline7" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_guess_the_player"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/test1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintTop_toTopOf="@id/guideline8_guess_the_player"
+        app:shapeAppearanceOverlay="@style/roundImageView" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/black_screen_guess_the_player"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/black_screen"
+        android:visibility="invisible"
+        android:alpha="0.6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintTop_toTopOf="@id/guideline8_guess_the_player"
+        app:shapeAppearanceOverlay="@style/roundImageView" />
+
+    <TextView
+        android:id="@+id/right_answer_guess_the_player"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/right_answer_background"
+        android:elevation="1dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:padding="6dp"
+        android:text="RIGHT"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/image_guess_the_player"
+        app:layout_constraintEnd_toEndOf="@id/image_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/image_guess_the_player"
+        app:layout_constraintTop_toTopOf="@id/image_guess_the_player" />
+
+    <TextView
+        android:id="@+id/wrong_answer_guess_the_player"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/right_answer_background"
+        android:backgroundTint="@color/wrong_red"
+        android:elevation="1dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:padding="6dp"
+        android:text="WRONG"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/image_guess_the_player"
+        app:layout_constraintEnd_toEndOf="@id/image_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/image_guess_the_player"
+        app:layout_constraintTop_toTopOf="@id/image_guess_the_player" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline90_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline60_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <TextView
+        android:id="@+id/answer1_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.number 1"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintTop_toTopOf="@id/guideline60_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/answer2_guess_the_player"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/answer2_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.number 2"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintTop_toBottomOf="@id/answer1_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/answer3_guess_the_player"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/answer3_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.number 3"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintTop_toBottomOf="@id/answer2_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/answer4_guess_the_player"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/answer4_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.number 4"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintTop_toBottomOf="@id/answer3_guess_the_player"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/guideline90_guess_the_player"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <TextView
+        android:id="@+id/backButton_guess_the_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Menu_button"
+        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
+        app:layout_constraintTop_toTopOf="@id/guideline0.4_1"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.019" />
+</androidx.constraintlayout.widget.ConstraintLayout>

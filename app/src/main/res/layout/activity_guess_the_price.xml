@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40424E"
+    tools:context=".questions.Guess_the_price">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/bowlby_one"
+        android:gravity="center"
+        android:text="Guess the price"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline9_guess_the_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline7" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_guess_the_price"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/test1"
+        app:layout_constraintTop_toBottomOf="@id/guideline9_guess_the_price"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_price"
+        app:shapeAppearanceOverlay="@style/roundImageView"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/black_screen_guess_the_price"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/black_screen"
+        android:alpha="0.6"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/guideline9_guess_the_price"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_price"
+        app:shapeAppearanceOverlay="@style/roundImageView"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08272506" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <TextView
+        android:id="@+id/player_name_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="player name"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:fontFamily="@font/racing_sans_one"
+        app:layout_constraintTop_toBottomOf="@id/image_guess_the_price"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_price"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.08"/>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_guess_the_power"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:contentDescription="@string/appbar_scrolling_view_behavior"
+        android:stepSize="1"
+        android:valueFrom="1"
+        android:valueTo="200"
+        app:labelBehavior="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_price"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_price"
+        app:layout_constraintTop_toBottomOf="@id/image_guess_the_price"
+        app:layout_constraintVertical_bias="0.35"
+        app:thumbColor="@color/white"
+        app:thumbStrokeColor="@color/gulf_orange"
+        app:thumbStrokeWidth="2dp"
+        app:tickColor="@color/blue"
+        app:trackColor="@color/semi_blue"
+        app:trackHeight="8dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:text="1 mln €"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginStart="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider_guess_the_power"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200 mln €"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider_guess_the_power"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/guessed_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mln €"
+        android:textColor="@color/yellow"
+        android:textSize="22dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_guess_the_price"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_guess_the_price"
+        app:layout_constraintTop_toBottomOf="@+id/slider_guess_the_power"
+        app:layout_constraintVertical_bias="0.005"/>
+
+    <TextView
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="45dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_guess_the_price"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_guess_the_price"
+        app:layout_constraintTop_toBottomOf="@+id/guessed_price"
+        app:layout_constraintVertical_bias="0.7"/>
+
+    <TextView
+        android:id="@+id/right_answer_guess_the_price"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/right_answer_background"
+        android:elevation="1dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:padding="6dp"
+        android:text="RIGHT"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/image_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/image_guess_the_price"
+        app:layout_constraintStart_toStartOf="@id/image_guess_the_price"
+        app:layout_constraintTop_toTopOf="@id/image_guess_the_price" />
+
+    <TextView
+        android:id="@+id/wrong_answer_guess_the_price"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/right_answer_background"
+        android:backgroundTint="@color/wrong_red"
+        android:elevation="1dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:padding="6dp"
+        android:text="WRONG"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/image_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/image_guess_the_price"
+        app:layout_constraintStart_toStartOf="@id/image_guess_the_price"
+        app:layout_constraintTop_toTopOf="@id/image_guess_the_price" />
+
+    <TextView
+        android:id="@+id/real_price_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        app:layout_constraintTop_toTopOf="@id/guessed_price"
+        app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_price"
+        app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_price"
+        app:layout_constraintBottom_toTopOf="@id/submit_button"
+        app:layout_constraintVertical_bias="0.8"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <TextView
+        android:id="@+id/backButton_guess_the_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Menu_button"
+        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
+        app:layout_constraintTop_toTopOf="@id/guideline0.4_1"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.019" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

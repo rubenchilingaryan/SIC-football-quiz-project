@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Football Quiz</string>
+
+    <string-array name="modes">
+        <item>Faster</item>
+        <item>More expensive</item>
+        <item>Guess the player</item>
+        <item>Guess the price</item>
+        <item>Scorer</item>
+        <item>Assists</item>
+        <item>Beta 1</item>
+        <item>Beta 2</item>
+    </string-array>
+
+    <string-array name="mode_explanations">
+        <item>Who is faster</item>
+        <item>Who is more expensive</item>
+        <item>Guess the player</item>
+        <item>Guess the price</item>
+        <item>Who has scored more</item>
+        <item>Who has assisted more</item>
+        <item>Beta 1</item>
+        <item>Beta 2</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

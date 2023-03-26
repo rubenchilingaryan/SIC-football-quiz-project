@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40424E"
+    tools:context=".questions.Who_has_scored_more">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/bowlby_one"
+        android:gravity="center"
+        android:text="Who has scored more?"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline7" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/player1_image_scored_more"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/test1"
+        app:layout_constraintTop_toTopOf="@id/guideline8"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:circularflow_radiusInDP="5dp"
+        app:shapeAppearanceOverlay="@style/roundImageView"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/black_screen1_scored_more"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/black_screen"
+        android:visibility="invisible"
+        android:alpha="0.6"
+        app:layout_constraintTop_toTopOf="@id/guideline8"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:circularflow_radiusInDP="5dp"
+        app:shapeAppearanceOverlay="@style/roundImageView"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/player2_image_scored_more"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/player1_image_scored_more"
+        app:shapeAppearanceOverlay="@style/roundImageView"
+        app:srcCompat="@drawable/test1" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/black_screen2_scored_more"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        android:alpha="0.6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/player1_image_scored_more"
+        app:shapeAppearanceOverlay="@style/roundImageView"
+        app:srcCompat="@drawable/black_screen" />
+
+    <TextView
+        android:id="@+id/player1_name_scored_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="player1"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:background="@color/semi_blue"
+        app:layout_constraintBottom_toBottomOf="@id/player1_image_scored_more"
+        app:layout_constraintEnd_toEndOf="@id/player1_image_scored_more"
+        app:layout_constraintStart_toStartOf="@id/player1_image_scored_more"
+        app:layout_constraintTop_toTopOf="@id/player1_image_scored_more"
+        app:layout_constraintVertical_bias="0.93" />
+
+    <TextView
+        android:id="@+id/player2_name_scored_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="player2"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:background="@color/semi_blue"
+        app:layout_constraintBottom_toBottomOf="@id/player2_image_scored_more"
+        app:layout_constraintEnd_toEndOf="@id/player2_image_scored_more"
+        app:layout_constraintStart_toStartOf="@id/player2_image_scored_more"
+        app:layout_constraintTop_toTopOf="@id/player2_image_scored_more"
+        app:layout_constraintVertical_bias="0.93"
+        />
+
+    <TextView
+        android:id="@+id/player1_goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:text="answer"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/player1_image_scored_more"
+        app:layout_constraintEnd_toEndOf="@id/player1_image_scored_more"
+        app:layout_constraintStart_toStartOf="@id/player1_image_scored_more"
+        app:layout_constraintTop_toTopOf="@id/player1_image_scored_more"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/player2_goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo_2_extrabold_italic"
+        android:text="answer"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/player2_image_scored_more"
+        app:layout_constraintEnd_toEndOf="@id/player2_image_scored_more"
+        app:layout_constraintStart_toStartOf="@id/player2_image_scored_more"
+        app:layout_constraintTop_toTopOf="@id/player2_image_scored_more"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0.4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.004" />
+
+    <TextView
+        android:id="@+id/backButton_who_has_scored_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Menu_button"
+        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
+        app:layout_constraintTop_toTopOf="@id/guideline0.4_1"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.026" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

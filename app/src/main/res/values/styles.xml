@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="roundImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">40dp</item>
+    </style>
+    
+    <style name="Menu_button" parent="">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="fontFamily">@font/exo_2_extrabold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:text">BACK</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@drawable/ic_baseline_arrow_left_24</item>
+    </style>
+
+    <style name="mode_button" parent="">
+        <item name="android:fontFamily">@font/exo_2_extrabold_italic</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeMaxTextSize">15sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:padding">10dp</item>
+        <item name="singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="layout_constraintHeight_percent">1</item>
+
+    </style>
+
+    <style name="ratings" parent="">
+        <item name="fontFamily">@font/exo_2_extrabold_italic</item>
+        <item name="android:drawableTop">@drawable/rating_icon</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeMaxTextSize">15sp</item>
+        <item name="autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="daily_mode" parent="">
+        <item name="fontFamily">@font/exo_2_extrabold</item>
+        <item name="android:drawableTop">@drawable/daily_mode</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeMaxTextSize">15sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:text">Daily</item>
+    </style>
+
+    <style name="next_ratings" parent="">
+        <item name="fontFamily">@font/exo_2_extrabold_italic</item>
+        <item name="android:drawableEnd">@drawable/right_arrow</item>
+        <item name="android:text">NEXT</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="tabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/exo_2_extrabold_italic</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#EFEFEF</color>
+    <color name="green">#06F306</color>
+    <color name="colorPrimary">#06F306</color>
+    <color name="semi_blue">#0099FF</color>
+    <color name="blue">#002AFF</color>
+    <color name="purple">#9D00FF</color>
+    <color name="pink">#FF00E5</color>
+    <color name="right_green">#0FA80A</color>
+    <color name="wrong_red">#CA0616</color>
+    <color name="gulf_orange">#FF8000</color>
+    <color name="yellow">#FFE600</color>
+    <color name="darker_green">#00A307</color>
+    <color name="recyclerView_background">#0D1757</color>
+    <color name="recyclerView_items">#CABCBC</color>
+    <color name="orange">#DA950C</color>
+    <color name="grey">#959391</color>
+    <color name="activities_background">#40424E</color>
+    <color name="other_yellow">#B5AE39</color>
+</resources>
