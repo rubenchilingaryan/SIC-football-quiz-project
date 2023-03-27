@@ -93,6 +93,16 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline60"
         app:layout_constraintBottom_toTopOf="@id/guideline69"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_back_to_start"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@id/guideline2_horizontal"
+        app:layout_constraintStart_toEndOf="@id/guideline2_vertical"
+        android:background="@drawable/back_arrow"
+        />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline25"
@@ -156,6 +166,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.69" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
 
 
 
