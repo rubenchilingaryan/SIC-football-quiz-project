@@ -1,6 +1,5 @@
 package com.example.footballquiz;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.example.footballquiz.ratings.RatingsActivity;
 
@@ -26,6 +26,7 @@ public class StartActivity extends AppCompatActivity {
     Button first_team,draw,second_team;
     TextView first_team_name,second_team_name;
     ImageView first_team_image,second_team_image;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +67,7 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 
-    void showDailyMode(){
-
+    void showDailyMode() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.daily_mode_dialog);
         dialog.setTitle("Daily mode");
@@ -80,12 +80,11 @@ public class StartActivity extends AppCompatActivity {
         second_team_name = dialogView.findViewById(R.id.second_team_name);
         first_team_image = dialogView.findViewById(R.id.first_team);
         second_team_image = dialogView.findViewById(R.id.second_team);
+
+
         dialog.setContentView(dialogView);
-
-
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
-
         dialog.show();
 
         first_team.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +110,8 @@ public class StartActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
     }
+
+
+
 }

@@ -73,7 +73,23 @@ public class Who_has_scored_more extends MethodsActivity {
         }
 
         ValueAnimator animator1 = ValueAnimator.ofInt(0,goals[indexPic1]);
-        animator1.setDuration(4000);
+//        animator1.setDuration(4000);
+        if(goals[indexPic1] > 0 || goals[indexPic1] < 50)
+            animator1.setDuration(2000);
+        else if(goals[indexPic1] >= 50 || goals[indexPic1] < 100)
+            animator1.setDuration(2500);
+        else if(goals[indexPic1] >= 100 || goals[indexPic1] < 150)
+            animator1.setDuration(3000);
+        else if(goals[indexPic1] >= 150 || goals[indexPic1] < 200)
+            animator1.setDuration(3500);
+        else if(goals[indexPic1] >= 200 || goals[indexPic1] < 250)
+            animator1.setDuration(4000);
+        else if(goals[indexPic1] >= 250 || goals[indexPic1] < 300)
+            animator1.setDuration(4500);
+        else if(goals[indexPic1] >= 300 || goals[indexPic1] < 350)
+            animator1.setDuration(5000);
+        else if(goals[indexPic1] >= 350)
+            animator1.setDuration(5500);
 
         TimeInterpolator interpolator = new DecelerateInterpolator();
 
@@ -92,7 +108,23 @@ public class Who_has_scored_more extends MethodsActivity {
 
 
         ValueAnimator animator2 = ValueAnimator.ofInt(0,goals[indexPic2]);
-        animator2.setDuration(4000);
+//        animator2.setDuration(4000);
+        if(goals[indexPic2] > 0 || goals[indexPic2] < 50)
+            animator2.setDuration(2000);
+        else if(goals[indexPic2] >= 50 || goals[indexPic2] < 100)
+            animator2.setDuration(2500);
+        else if(goals[indexPic2] >= 100 || goals[indexPic2] < 150)
+            animator2.setDuration(3000);
+        else if(goals[indexPic2] >= 150 || goals[indexPic2] < 200)
+            animator2.setDuration(3500);
+        else if(goals[indexPic2] >= 200 || goals[indexPic2] < 250)
+            animator2.setDuration(4000);
+        else if(goals[indexPic2] >= 250 || goals[indexPic2] < 300)
+            animator2.setDuration(4500);
+        else if(goals[indexPic2] >= 300 || goals[indexPic2] < 350)
+            animator2.setDuration(5000);
+        else if(goals[indexPic2] >= 350)
+            animator2.setDuration(5500);
 
         TimeInterpolator interpolator2 = new DecelerateInterpolator();
 
@@ -132,6 +164,7 @@ public class Who_has_scored_more extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
+                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -147,6 +180,24 @@ public class Who_has_scored_more extends MethodsActivity {
                             },1000);
                         }
                     });
+
+                    else if(animator1.getDuration() < animator2.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_goals.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_goals.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                },1000);
+                            }
+                        });
+
 //                   Intent i = new Intent(getApplicationContext(), Who_has_scored_more_MidMode.class);
 //                   startActivity(i);
 //                   finish();
@@ -167,6 +218,7 @@ public class Who_has_scored_more extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
+                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -182,6 +234,22 @@ public class Who_has_scored_more extends MethodsActivity {
                             },1000);
                         }
                     });
+                    else if(animator1.getDuration() < animator2.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_goals.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_goals.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                },1000);
+                            }
+                        });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
 //                  startActivity(i);
 //                  finish();
@@ -202,6 +270,7 @@ public class Who_has_scored_more extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
+                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -217,6 +286,22 @@ public class Who_has_scored_more extends MethodsActivity {
                             },1000);
                         }
                     });
+                    else if(animator1.getDuration() < animator2.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_goals.setTextColor(Color.parseColor("#CA0616"));
+                                player2_goals.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                },1000);
+                            }
+                        });
                     //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
                     //                  startActivity(i);
                     //                  finish();
@@ -237,6 +322,7 @@ public class Who_has_scored_more extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
+                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -252,6 +338,22 @@ public class Who_has_scored_more extends MethodsActivity {
                             },1000);
                         }
                     });
+                    else if(animator1.getDuration() < animator2.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_goals.setTextColor(Color.parseColor("#CA0616"));
+                                player2_goals.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                },1000);
+                            }
+                        });
 //                   Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
 //                   startActivity(i);
 //                   finish();

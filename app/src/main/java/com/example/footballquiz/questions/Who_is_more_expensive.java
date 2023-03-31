@@ -75,7 +75,23 @@ public class Who_is_more_expensive extends MethodsActivity {
 
 
         ValueAnimator animator1 = ValueAnimator.ofInt(0,prices[indexPic1]);
-        animator1.setDuration(4000);
+//        animator1.setDuration(4000);
+        if(prices[indexPic1] > 0 || prices[indexPic1] < 20)
+            animator1.setDuration(2000);
+        else if(prices[indexPic1] >= 20 || prices[indexPic1] < 40)
+            animator1.setDuration(2500);
+        else if(prices[indexPic1] >= 40 || prices[indexPic1] < 60)
+            animator1.setDuration(3000);
+        else if(prices[indexPic1] >= 60 || prices[indexPic1] < 80)
+            animator1.setDuration(3500);
+        else if(prices[indexPic1] >= 80 || prices[indexPic1] < 100)
+            animator1.setDuration(4000);
+        else if(prices[indexPic1] >= 100 || prices[indexPic1] < 120)
+            animator1.setDuration(4500);
+        else if(prices[indexPic1] >= 120 || prices[indexPic1] < 140)
+            animator1.setDuration(5000);
+        else if(prices[indexPic1] >= 140)
+            animator1.setDuration(5500);
 
         TimeInterpolator interpolator = new DecelerateInterpolator();
 
@@ -94,7 +110,23 @@ public class Who_is_more_expensive extends MethodsActivity {
 
 
         ValueAnimator animator2 = ValueAnimator.ofInt(0,prices[indexPic2]);
-        animator2.setDuration(4000);
+//        animator2.setDuration(4000);
+        if(prices[indexPic2] > 0 || prices[indexPic2] < 20)
+            animator2.setDuration(2000);
+        else if(prices[indexPic2] >= 20 || prices[indexPic2] < 40)
+            animator2.setDuration(2500);
+        else if(prices[indexPic2] >= 40 || prices[indexPic2] < 60)
+            animator2.setDuration(3000);
+        else if(prices[indexPic2] >= 60 || prices[indexPic2] < 80)
+            animator2.setDuration(3500);
+        else if(prices[indexPic2] >= 80 || prices[indexPic2] < 100)
+            animator2.setDuration(4000);
+        else if(prices[indexPic2] >= 100 || prices[indexPic2] < 120)
+            animator2.setDuration(4500);
+        else if(prices[indexPic2] >= 120 || prices[indexPic2] < 140)
+            animator2.setDuration(5000);
+        else if(prices[indexPic2] >= 140)
+            animator2.setDuration(5500);
 
         TimeInterpolator interpolator2 = new DecelerateInterpolator();
 
@@ -135,19 +167,35 @@ public class Who_is_more_expensive extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    animator1.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            player1_price.setTextColor(Color.parseColor("#0FA80A"));
-                            player2_price.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogMoreExpensive();
-                                }
-                            },1000);
-                        }
-                    });
+                    if(animator1.getDuration() >= animator2.getDuration())
+                        animator1.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_price.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
+
+                    else if(animator2.getDuration() < animator1.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_price.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
                     //                 Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
                     //                 startActivity(i);
                     //                 finish();
@@ -168,20 +216,35 @@ public class Who_is_more_expensive extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    animator1.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            player1_price.setTextColor(Color.parseColor("#0FA80A"));
-                            player2_price.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogMoreExpensive();
-                                }
-                            },1000);
-                        }
+                    if(animator1.getDuration() >= animator2.getDuration())
+                        animator1.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_price.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
 
-                    });
+                    else if(animator2.getDuration() < animator1.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#0FA80A"));
+                                player2_price.setTextColor(Color.parseColor("#CA0616"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
                     //                Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
                     //                startActivity(i);
                     //                finish();
@@ -202,19 +265,35 @@ public class Who_is_more_expensive extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    animator1.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            player1_price.setTextColor(Color.parseColor("#CA0616"));
-                            player2_price.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogMoreExpensive();
-                                }
-                            },1000);
-                        }
-                    });
+                    if(animator1.getDuration() >= animator2.getDuration())
+                        animator1.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#CA0616"));
+                                player2_price.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
+
+                    else if(animator2.getDuration() < animator1.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#CA0616"));
+                                player2_price.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
 //                  startActivity(i);
 //                  finish();
@@ -235,19 +314,35 @@ public class Who_is_more_expensive extends MethodsActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    animator1.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            player1_price.setTextColor(Color.parseColor("#CA0616"));
-                            player2_price.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogMoreExpensive();
-                                }
-                            },1000);
-                        }
-                    });
+                    if(animator1.getDuration() >= animator2.getDuration())
+                        animator1.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#CA0616"));
+                                player2_price.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
+
+                    else if(animator2.getDuration() < animator1.getDuration())
+                        animator2.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                player1_price.setTextColor(Color.parseColor("#CA0616"));
+                                player2_price.setTextColor(Color.parseColor("#0FA80A"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showPopUpDialogMoreExpensive();
+                                    }
+                                },1000);
+                            }
+                        });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
 //                  startActivity(i);
 //                  finish();
