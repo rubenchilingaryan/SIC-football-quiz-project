@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.footballquiz.R;
-import com.example.footballquiz.questions.ModesModel;
 
 import java.util.ArrayList;
 import java.util.Random;

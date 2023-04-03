@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballquiz.R;
-import com.example.footballquiz.questions.ModesModel;
 
 import java.util.ArrayList;
 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.footballquiz.MainMenu;
 import com.example.footballquiz.R;
@@ -41,7 +42,7 @@ public class Guess_the_player extends AppCompatActivity {
         TextView wrong_anim = findViewById(R.id.wrong_answer_guess_the_player);
         TextView right_anim = findViewById(R.id.right_answer_guess_the_player);
         TextView[] answers = {ans1, ans2, ans3, ans4};
-        TextView back = findViewById(R.id.backButton_guess_the_player);
+        AppCompatButton back = findViewById(R.id.button_back_guess_the_player);
 
         int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
                 R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,

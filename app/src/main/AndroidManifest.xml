@@ -54,21 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Who_is_faster_MidMode"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".questions.Who_is_more_expensive"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".questions.Who_is_more_expensive_MidMode"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -82,13 +68,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Guess_the_price_MidMode"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".questions.Guess_the_player"
             android:exported="true">
             <meta-data
@@ -96,21 +75,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Guess_the_player_MidMode"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".questions.Who_has_scored_more"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".questions.Who_has_scored_more_MidMode"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

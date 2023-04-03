@@ -2,6 +2,7 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -42,8 +43,9 @@ public class Guess_the_price extends AppCompatActivity {
     int[] prices = new int[]{15,40,50,20,70,170,15,9,5,70,35,180,10,80,60,40,80,60,5,120,50,70};
 
     ImageView image,black_screen;
-    TextView player_name,price,submit,right_anim,wrong_anim,real_price,back;
+    TextView player_name,price,submit,right_anim,wrong_anim,real_price;
     Slider slider;
+    AppCompatButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class Guess_the_price extends AppCompatActivity {
         wrong_anim = findViewById(R.id.wrong_answer_guess_the_price);
         real_price = findViewById(R.id.real_price_guess_the_price);
         slider = findViewById(R.id.slider_guess_the_power);
-        back = findViewById(R.id.backButton_guess_the_price);
+        back = findViewById(R.id.button_back_guess_the_price);
 
         Random random = new Random();
         int index = random.nextInt(images.length);

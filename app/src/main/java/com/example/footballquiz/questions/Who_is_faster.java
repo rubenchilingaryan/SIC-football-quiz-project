@@ -1,6 +1,7 @@
 package com.example.footballquiz.questions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,7 +19,8 @@ import java.util.Random;
 public class Who_is_faster extends MethodsActivity {
 
     ImageView image1,image2,image1_black,image2_black;
-    TextView player1_speed,player2_speed,player1_name,player2_name,back;
+    TextView player1_speed,player2_speed,player1_name,player2_name;
+    AppCompatButton back;
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -50,11 +52,20 @@ public class Who_is_faster extends MethodsActivity {
         player2_name = findViewById(R.id.player2_name_fast);
         player1_speed = findViewById(R.id.player1_speed);
         player2_speed = findViewById(R.id.player2_speed);
-        back = findViewById(R.id.backButton_faster);
+        back = findViewById(R.id.button_back_faster);
 
 
 /*        fasterPlayer(image1,image2,image1_black,image2_black,player1_name,player2_name,player1_speed,player2_speed,
                 images,player_names,speeds,back); */
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
         Random rand = new Random();
@@ -137,14 +148,6 @@ public class Who_is_faster extends MethodsActivity {
 //                  Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
 //                  startActivity(i);
 //                  finish();
-                }
-            });
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), MainMenu.class);
-                    startActivity(i);
-                    finish();
                 }
             });
         }

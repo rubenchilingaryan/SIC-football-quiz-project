@@ -31,17 +31,9 @@ public class MainMenu extends AppCompatActivity {
         guess_the_player = findViewById(R.id.guess_the_player);
         who_has_scored_more = findViewById(R.id.who_has_scored_more);
         who_has_assisted_more = findViewById(R.id.who_has_assisted_more);
-        backToStart = findViewById(R.id.button_back_to_start);
 
 
-        backToStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),StartActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
 
         who_is_faster.setOnClickListener(new View.OnClickListener() {
             @Override

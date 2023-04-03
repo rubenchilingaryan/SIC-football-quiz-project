@@ -2,6 +2,7 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,7 +26,8 @@ import java.util.Random;
 public class Who_has_assisted_more extends AppCompatActivity {
 
     ImageView image1, image2, black_screen1, black_screen2;
-    TextView player1_name, player2_name, player1_assists, player2_assists, back;
+    TextView player1_name, player2_name, player1_assists, player2_assists;
+    AppCompatButton back;
 
     int[] images = new int[]{R.drawable.adama_traore, R.drawable.antonio_rudiger, R.drawable.casemiro,
             R.drawable.cristiano_ronaldo, R.drawable.darwin_nunez, R.drawable.erling_haaland,
@@ -58,7 +60,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
         player2_name = findViewById(R.id.player2_name_assisted_more);
         player1_assists = findViewById(R.id.player1_assists);
         player2_assists = findViewById(R.id.player2_assists);
-        back = findViewById(R.id.backButton_who_has_assisted_more);
+        back = findViewById(R.id.button_back_assisted_more);
 
 
         Random rand = new Random();
@@ -71,25 +73,15 @@ public class Who_has_assisted_more extends AppCompatActivity {
                 break;
             }
         }
+        ValueAnimator animator1;
+        if(assists[indexPic1] % 100 > 50)
+        animator1 = ValueAnimator.ofInt(assists[indexPic1] - assists[indexPic1]%100, assists[indexPic1]);
+        else if(assists[indexPic1] % 100 < 50 && assists[indexPic1] > 50)
+            animator1 = ValueAnimator.ofInt(assists[indexPic1] - assists[indexPic1]%100 - 50, assists[indexPic1]);
+        else
+            animator1 = ValueAnimator.ofInt(0,assists[indexPic1]);
+        animator1.setDuration(2500);
 
-        ValueAnimator animator1 = ValueAnimator.ofInt(0, assists[indexPic1]);
-//        animator1.setDuration(4000);
-        if(assists[indexPic1] > 0 || assists[indexPic1] < 50)
-            animator1.setDuration(2000);
-        else if(assists[indexPic1] >= 50 || assists[indexPic1] < 100)
-            animator1.setDuration(2500);
-        else if(assists[indexPic1] >= 100 || assists[indexPic1] < 150)
-            animator1.setDuration(3000);
-        else if(assists[indexPic1] >= 150 || assists[indexPic1] < 200)
-            animator1.setDuration(3500);
-        else if(assists[indexPic1] >= 200 || assists[indexPic1] < 250)
-            animator1.setDuration(4000);
-        else if(assists[indexPic1] >= 250 || assists[indexPic1] < 300)
-            animator1.setDuration(4500);
-        else if(assists[indexPic1] >= 300 || assists[indexPic1] < 350)
-            animator1.setDuration(5000);
-        else if(assists[indexPic1] >= 350)
-            animator1.setDuration(5500);
 
         TimeInterpolator interpolator = new DecelerateInterpolator();
 
@@ -104,25 +96,14 @@ public class Who_has_assisted_more extends AppCompatActivity {
             }
         });
 
-
-        ValueAnimator animator2 = ValueAnimator.ofInt(0, assists[indexPic2]);
-//        animator2.setDuration(4000);
-        if(assists[indexPic2] > 0 || assists[indexPic2] < 50)
-            animator2.setDuration(2000);
-        else if(assists[indexPic2] >= 50 || assists[indexPic2] < 100)
-            animator2.setDuration(2500);
-        else if(assists[indexPic2] >= 100 || assists[indexPic2] < 150)
-            animator2.setDuration(3000);
-        else if(assists[indexPic2] >= 150 || assists[indexPic2] < 200)
-            animator2.setDuration(3500);
-        else if(assists[indexPic2] >= 200 || assists[indexPic2] < 250)
-            animator2.setDuration(4000);
-        else if(assists[indexPic2] >= 250 || assists[indexPic2] < 300)
-            animator2.setDuration(4500);
-        else if(assists[indexPic2] >= 300 || assists[indexPic2] < 350)
-            animator2.setDuration(5000);
-        else if(assists[indexPic2] >= 350)
-            animator2.setDuration(5500);
+        ValueAnimator animator2;
+        if(assists[indexPic2] % 100 > 50)
+        animator2 = ValueAnimator.ofInt(assists[indexPic2] - assists[indexPic2]%100, assists[indexPic2]);
+        else if(assists[indexPic2] % 100 < 50 && assists[indexPic2] > 50)
+            animator2 = ValueAnimator.ofInt(assists[indexPic2] - assists[indexPic2]%100 - 50, assists[indexPic2]);
+        else
+            animator2 = ValueAnimator.ofInt(0, assists[indexPic2]);
+        animator2.setDuration(2500);
 
         TimeInterpolator interpolator2 = new DecelerateInterpolator();
 
@@ -162,7 +143,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -178,23 +158,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             }, 1000);
                         }
                     });
-
-                    else if(animator1.getDuration() < animator2.getDuration())
-                        animator2.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                player1_assists.setTextColor(Color.parseColor("#0FA80A"));
-                                player2_assists.setTextColor(Color.parseColor("#CA0616"));
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                }, 1000);
-                            }
-                        });
 //                   Intent i = new Intent(getApplicationContext(), Who_has_scored_more_MidMode.class);
 //                   startActivity(i);
 //                   finish();
@@ -215,7 +178,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -231,23 +193,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             }, 1000);
                         }
                     });
-
-                    else if(animator1.getDuration() < animator2.getDuration())
-                        animator2.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                player1_assists.setTextColor(Color.parseColor("#0FA80A"));
-                                player2_assists.setTextColor(Color.parseColor("#CA0616"));
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                }, 1000);
-                            }
-                        });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
 //                  startActivity(i);
 //                  finish();
@@ -268,7 +213,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -284,23 +228,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             }, 1000);
                         }
                     });
-
-                    else if(animator1.getDuration() < animator2.getDuration())
-                        animator2.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                player1_assists.setTextColor(Color.parseColor("#CA0616"));
-                                player2_assists.setTextColor(Color.parseColor("#0FA80A"));
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                }, 1000);
-                            }
-                        });
                     //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
                     //                  startActivity(i);
                     //                  finish();
@@ -321,7 +248,6 @@ public class Who_has_assisted_more extends AppCompatActivity {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
-                    if(animator1.getDuration() >= animator2.getDuration())
                     animator1.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -338,22 +264,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
                         }
                     });
 
-                    else if(animator1.getDuration() < animator2.getDuration())
-                        animator2.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                player1_assists.setTextColor(Color.parseColor("#CA0616"));
-                                player2_assists.setTextColor(Color.parseColor("#0FA80A"));
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                }, 1000);
-                            }
-                        });
+
 //                   Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
 //                   startActivity(i);
 //                   finish();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40424E"
+    android:background="@drawable/game_background"
     tools:context=".questions.Guess_the_player">
 
 
@@ -30,13 +30,14 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fontFamily="@font/bowlby_one"
+        android:fontFamily="@font/exo_2_extrabold"
         android:gravity="center"
         android:text="Guess the player"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="@id/guideline8_guess_the_player"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,14 +186,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.004" />
 
-    <TextView
-        android:id="@+id/backButton_guess_the_player"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Menu_button"
-        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
-        app:layout_constraintTop_toTopOf="@id/guideline0.4_1"
-        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -200,4 +193,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.019" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_back_guess_the_player"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
+        app:layout_constraintTop_toTopOf="@id/textView"
+        app:layout_constraintBottom_toBottomOf="@id/textView"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

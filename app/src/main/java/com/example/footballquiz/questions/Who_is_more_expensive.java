@@ -2,6 +2,7 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,7 +26,8 @@ import java.util.Random;
 public class Who_is_more_expensive extends MethodsActivity {
 
     ImageView image1,image2,black_screen1,black_screen2;
-    TextView player1_price,player2_price,player1_name,player2_name,back;
+    TextView player1_price,player2_price,player1_name,player2_name;
+    AppCompatButton back;
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -56,10 +58,19 @@ public class Who_is_more_expensive extends MethodsActivity {
         player2_price = findViewById(R.id.player2_price);
         player1_name = findViewById(R.id.player1_name_expensive);
         player2_name = findViewById(R.id.player2_name_expensive);
-        back = findViewById(R.id.backButton_more_expensive);
+        back = findViewById(R.id.button_back_more_expensive);
 
 /*        expensivePlayer(image1,image2,black_screen1,black_screen2,player1_name,player2_name,player1_price,
                 player2_price,images,player_names,prices,back);*/
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         Random rand = new Random();
         int indexPic1 = rand.nextInt(images.length);
@@ -349,14 +360,6 @@ public class Who_is_more_expensive extends MethodsActivity {
                 }
             });
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), MainMenu.class);
-                    startActivity(i);
-                    finish();
-                }
-            });
         }
     }
 }

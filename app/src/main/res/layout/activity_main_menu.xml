@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40424E"
+    android:background="@drawable/game_background"
     tools:context=".MainMenu">
 
     <TextView
@@ -15,7 +15,7 @@
         android:text="Modes"
         android:textColor="@color/orange"
         android:textSize="40dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_main_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -93,15 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline60"
         app:layout_constraintBottom_toTopOf="@id/guideline69"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_back_to_start"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/guideline2_horizontal"
-        app:layout_constraintStart_toEndOf="@id/guideline2_vertical"
-        android:background="@drawable/back_arrow"
-        />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -168,6 +159,13 @@
         app:layout_constraintGuide_percent="0.69" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline78"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.78" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -181,6 +179,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.03" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/top_bar_main_menu"
+        android:name="com.example.footballquiz.LevelFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

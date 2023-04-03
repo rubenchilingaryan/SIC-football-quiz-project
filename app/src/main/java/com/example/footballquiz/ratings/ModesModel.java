@@ -1,4 +1,4 @@
-package com.example.footballquiz.questions;
+package com.example.footballquiz.ratings;
 
 public class ModesModel {
     String number;

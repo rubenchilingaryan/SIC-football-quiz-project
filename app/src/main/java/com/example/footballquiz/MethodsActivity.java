@@ -1,30 +1,20 @@
 package com.example.footballquiz;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.footballquiz.questions.Guess_the_price;
-import com.example.footballquiz.questions.Who_has_scored_more;
-import com.example.footballquiz.questions.Who_has_scored_more_MidMode;
 import com.example.footballquiz.questions.Who_is_faster;
-import com.example.footballquiz.questions.Who_is_faster_MidMode;
 import com.example.footballquiz.questions.Who_is_more_expensive;
-import com.example.footballquiz.questions.Who_is_more_expensive_MidMode;
 
 import java.util.Random;
 
