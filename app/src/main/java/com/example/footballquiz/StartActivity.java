@@ -11,10 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.example.footballquiz.ratings.RatingsActivity;
 
 public class StartActivity extends AppCompatActivity {
+
+//    DBHelper dbHelper = new DBHelper(this);
 
 // activity views
 
@@ -39,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
         ratings = findViewById(R.id.ratings);
         daily_mode = findViewById(R.id.daily_mode);
 
-// dialog views
+
 
         showDailyMode();
 
@@ -110,8 +111,30 @@ public class StartActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
+//      Bitmap adamaTraoreImage = BitmapFactory.decodeResource(getResources(), R.drawable.adama_traore);
+//      dbHelper.addPlayer("Adama Traore", adamaTraoreImage);
+//      dbHelper.addPlayer("Antonio Rüdiger", BitmapFactory.decodeResource(getResources(), R.drawable.antonio_rudiger));
+//      dbHelper.addPlayer("Casemiro", BitmapFactory.decodeResource(getResources(), R.drawable.casemiro));
+//      dbHelper.addPlayer("Cristiano Ronaldo", BitmapFactory.decodeResource(getResources(), R.drawable.cristiano_ronaldo));
+//      dbHelper.addPlayer("Darwin Núñez", BitmapFactory.decodeResource(getResources(), R.drawable.darwin_nunez));
+//      dbHelper.addPlayer("Erling Haaland", BitmapFactory.decodeResource(getResources(), R.drawable.erling_haaland));
+//      dbHelper.addPlayer("Hector Bellerin", BitmapFactory.decodeResource(getResources(), R.drawable.hector_bellerin));
+//      dbHelper.addPlayer("James Rodríguez", BitmapFactory.decodeResource(getResources(), R.drawable.james_rodriguez));
+//      dbHelper.addPlayer("Jordi Alba", BitmapFactory.decodeResource(getResources(), R.drawable.jordi_alba));
+//      dbHelper.addPlayer("Kai Havertz", BitmapFactory.decodeResource(getResources(), R.drawable.kai_havertz));
+//      dbHelper.addPlayer("Karim Benzema", BitmapFactory.decodeResource(getResources(), R.drawable.karim_benzema));
+//      dbHelper.addPlayer("Kylian Mbappé", BitmapFactory.decodeResource(getResources(), R.drawable.kylian_mbappe));
+//      dbHelper.addPlayer("Luka Modrić", BitmapFactory.decodeResource(getResources(), R.drawable.luka_modric));
+//      dbHelper.addPlayer("Mohamed Salah", BitmapFactory.decodeResource(getResources(), R.drawable.mohammed_salah));
+//      dbHelper.addPlayer("Ousmane Dembélé", BitmapFactory.decodeResource(getResources(), R.drawable.ousmane_dembele));
+//      dbHelper.addPlayer("Raphaël Varane", BitmapFactory.decodeResource(getResources(), R.drawable.raphael_varane));
+//      dbHelper.addPlayer("Rodrygo", BitmapFactory.decodeResource(getResources(), R.drawable.rodrygo));
+//      dbHelper.addPlayer("Ronald Araújo", BitmapFactory.decodeResource(getResources(), R.drawable.ronald_araujo));
+//      dbHelper.addPlayer("Sergio Busquets", BitmapFactory.decodeResource(getResources(), R.drawable.sergio_busquets));
+//      dbHelper.addPlayer("Vinícius Júnior", BitmapFactory.decodeResource(getResources(), R.drawable.vinicius_junior));
+//      dbHelper.addPlayer("Virgil van Dijk", BitmapFactory.decodeResource(getResources(), R.drawable.virgil_van_dijk));
+//      dbHelper.addPlayer("Raheem Sterling", BitmapFactory.decodeResource(getResources(), R.drawable.raheem_sterling));
     }
-
-
 
 }

@@ -1,6 +1,5 @@
 package com.example.footballquiz.questions;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
@@ -17,6 +16,8 @@ import com.example.footballquiz.R;
 import java.util.Random;
 
 public class Who_is_faster extends MethodsActivity {
+
+
 
     ImageView image1,image2,image1_black,image2_black;
     TextView player1_speed,player2_speed,player1_name,player2_name;
@@ -44,6 +45,7 @@ public class Who_is_faster extends MethodsActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_who_is_faster);
 
+
         image1 = findViewById(R.id.player1_image_fast);
         image1_black = findViewById(R.id.black_screen1_faster);
         image2 = findViewById(R.id.player2_image_fast);
@@ -53,6 +55,9 @@ public class Who_is_faster extends MethodsActivity {
         player1_speed = findViewById(R.id.player1_speed);
         player2_speed = findViewById(R.id.player2_speed);
         back = findViewById(R.id.button_back_faster);
+
+
+
 
 
 /*        fasterPlayer(image1,image2,image1_black,image2_black,player1_name,player2_name,player1_speed,player2_speed,
@@ -79,12 +84,14 @@ public class Who_is_faster extends MethodsActivity {
             }
         }
 
-        image1.setImageResource(images[indexPic1]);
-        image2.setImageResource(images[indexPic2]);
         player1_name.setText(player_names[indexPic1]);
         player2_name.setText(player_names[indexPic2]);
+        image1.setImageResource(images[indexPic1]);
+        image2.setImageResource(images[indexPic2]);
         player1_speed.setText(Double.toString(speeds[indexPic1]) + " km/h");
         player2_speed.setText(Double.toString(speeds[indexPic2]) + " km/h");
+
+
 
         if(speeds[indexPic1]>speeds[indexPic2]){
             image1.setOnClickListener(new View.OnClickListener() {

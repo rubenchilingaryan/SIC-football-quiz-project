@@ -24,8 +24,8 @@ public class RatingsActivity_2 extends AppCompatActivity {
         setContentView(R.layout.activity_ratings2);
 
         back = findViewById(R.id.back_modes);
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout2);
+        viewPager = findViewById(R.id.viewPager2);
 
         tabLayout.setupWithViewPager(viewPager);
 

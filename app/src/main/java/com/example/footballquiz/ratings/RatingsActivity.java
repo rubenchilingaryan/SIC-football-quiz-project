@@ -2,6 +2,8 @@ package com.example.footballquiz.ratings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +12,16 @@ import android.widget.Button;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.StartActivity;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class RatingsActivity extends AppCompatActivity implements RecyclerViewInterface{
 
-    Button faster,expensive,guessThePrice;
     Button other_modes;
     Button back;
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
 
@@ -26,49 +30,22 @@ public class RatingsActivity extends AppCompatActivity implements RecyclerViewIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ratings);
 
-        faster = findViewById(R.id.btn_rating_faster);
-        expensive = findViewById(R.id.btn_rating_more_expensive);
-        guessThePrice = findViewById(R.id.btn_rating_guess_the_price);
-
         other_modes = findViewById(R.id.other_modes);
-
         back = findViewById(R.id.button_back_to_menu);
 
-        faster.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,FragmentFasterRatings.class,null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("faster")
-                        .commit();
-            }
-        });
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
-        expensive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,FragmentMoreExpensiveRatings.class,null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("moreExpensive")
-                        .commit();
-            }
-        });
+        tabLayout.setupWithViewPager(viewPager);
 
-        guessThePrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,FragmentGuessThePrice.class,null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("guessThePrice")
-                        .commit();
-            }
-        });
+        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
+        vpAdapter.addFragment(new FragmentFasterRatings(),"Faster");
+        vpAdapter.addFragment(new FragmentMoreExpensiveRatings(),"Expensive");
+        vpAdapter.addFragment(new FragmentGuessThePrice(),"Price");
+
+        viewPager.setAdapter(vpAdapter);
+
 
         other_modes.setOnClickListener(new View.OnClickListener() {
             @Override

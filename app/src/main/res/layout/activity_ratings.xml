@@ -60,12 +60,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView"
-                android:name="com.example.footballquiz.ratings.FragmentFasterRatings"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+
 
 
         </LinearLayout>
@@ -161,39 +156,47 @@
         app:layout_constraintGuide_percent="0.03" />
 
 
-    <Button
-        android:id="@+id/btn_rating_faster"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Faster"
-        android:fontFamily="@font/exo_2_extrabold_italic"
-        android:backgroundTint="@color/orange"
-        app:layout_constraintStart_toStartOf="@id/guideline10"
-        app:layout_constraintTop_toTopOf="@id/guideline20"
-        app:layout_constraintBottom_toBottomOf="@id/guideline26"/>
+        android:layout_height="30dp"
+        app:tabIndicatorColor="@color/orange"
+        app:tabTextColor="@color/other_yellow"
+        app:tabSelectedTextColor="@color/orange"
+        app:tabTextAppearance="@style/tabTextStyle"
 
-    <Button
-        android:id="@+id/btn_rating_more_expensive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Expensive"
-        android:fontFamily="@font/exo_2_extrabold_italic"
-        android:backgroundTint="@color/orange"
-        app:layout_constraintStart_toEndOf="@id/btn_rating_faster"
-        app:layout_constraintEnd_toStartOf="@id/btn_rating_guess_the_price"
-        app:layout_constraintTop_toTopOf="@id/guideline20"
-        app:layout_constraintBottom_toBottomOf="@id/guideline26"/>
+        android:background="@color/material_dynamic_neutral_variant30"
+        app:tabGravity="fill"
+        app:tabMode="scrollable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline20">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Faster"
 
-    <Button
-        android:id="@+id/btn_rating_guess_the_price"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Expensive"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Price" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price"
-        android:fontFamily="@font/exo_2_extrabold_italic"
-        android:backgroundTint="@color/orange"
-        app:layout_constraintTop_toTopOf="@id/guideline20"
-        app:layout_constraintBottom_toBottomOf="@id/guideline26"
-        app:layout_constraintEnd_toEndOf="@id/guideline90"/>
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintStart_toStartOf="@id/tabLayout"
+        app:layout_constraintEnd_toEndOf="@id/tabLayout"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_back_to_menu"
