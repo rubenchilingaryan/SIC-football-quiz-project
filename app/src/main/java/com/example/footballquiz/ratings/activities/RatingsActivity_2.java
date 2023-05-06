@@ -1,4 +1,4 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.footballquiz.R;
+import com.example.footballquiz.ratings.VPAdapter;
+import com.example.footballquiz.ratings.fragments.FragmentAssists;
+import com.example.footballquiz.ratings.fragments.FragmentGuessThePlayer;
+import com.example.footballquiz.ratings.fragments.FragmentScorer;
 import com.google.android.material.tabs.TabLayout;
 
 public class RatingsActivity_2 extends AppCompatActivity {

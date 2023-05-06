@@ -15,14 +15,14 @@
         android:theme="@style/Theme.FootballQuiz"
         tools:targetApi="31">
         <activity
-            android:name=".ratings.RatingsActivity_2"
+            android:name=".ratings.activities.RatingsActivity_2"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ratings.RatingsActivity"
+            android:name=".ratings.activities.RatingsActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

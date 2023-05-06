@@ -1,4 +1,4 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.fragments;
 
 import android.os.Bundle;
 
@@ -11,12 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.footballquiz.R;
+import com.example.footballquiz.ratings.recyclerView.M_RecyclerViewAdapter;
+import com.example.footballquiz.ratings.recyclerView.ModesModel;
+import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class FragmentAssists extends Fragment implements RecyclerViewInterface{
+public class FragmentAssists extends Fragment implements RecyclerViewInterface {
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
     int ratingBest = 14424;

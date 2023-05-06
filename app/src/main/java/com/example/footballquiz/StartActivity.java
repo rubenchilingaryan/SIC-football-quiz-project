@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.footballquiz.ratings.RatingsActivity;
+import com.example.footballquiz.ratings.activities.RatingsActivity;
 
 public class StartActivity extends AppCompatActivity {
 

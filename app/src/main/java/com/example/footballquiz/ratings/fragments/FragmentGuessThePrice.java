@@ -1,4 +1,4 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.fragments;
 
 import android.os.Bundle;
 
@@ -11,23 +11,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.footballquiz.R;
+import com.example.footballquiz.ratings.recyclerView.M_RecyclerViewAdapter;
+import com.example.footballquiz.ratings.recyclerView.ModesModel;
+import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class FragmentMoreExpensiveRatings extends Fragment implements RecyclerViewInterface{
+public class FragmentGuessThePrice extends Fragment implements RecyclerViewInterface {
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
-    int ratingBest = 9114;
+    int ratingBest = 11979;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_more_expensive_ratings, container, false);
-        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_guess_the_price, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_more_expensive);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_guess_the_price);
 
         setUpModesModels();
 

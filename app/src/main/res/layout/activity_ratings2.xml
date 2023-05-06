@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/game_background"
-    tools:context=".ratings.RatingsActivity_2">
+    tools:context=".ratings.activities.RatingsActivity_2">
 
 
     <TextView

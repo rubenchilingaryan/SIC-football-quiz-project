@@ -1,4 +1,4 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.recyclerView;
 
 import android.content.Context;
 import android.graphics.Color;

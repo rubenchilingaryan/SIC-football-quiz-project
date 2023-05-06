@@ -1,4 +1,4 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.recyclerView;
 
 public interface RecyclerViewInterface {
     void onItemClick(int position);

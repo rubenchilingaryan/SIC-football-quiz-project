@@ -1,7 +1,6 @@
-package com.example.footballquiz.ratings;
+package com.example.footballquiz.ratings.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -12,11 +11,17 @@ import android.widget.Button;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.StartActivity;
+import com.example.footballquiz.ratings.recyclerView.ModesModel;
+import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
+import com.example.footballquiz.ratings.VPAdapter;
+import com.example.footballquiz.ratings.fragments.FragmentFasterRatings;
+import com.example.footballquiz.ratings.fragments.FragmentGuessThePrice;
+import com.example.footballquiz.ratings.fragments.FragmentMoreExpensiveRatings;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
-public class RatingsActivity extends AppCompatActivity implements RecyclerViewInterface{
+public class RatingsActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     Button other_modes;
     Button back;
