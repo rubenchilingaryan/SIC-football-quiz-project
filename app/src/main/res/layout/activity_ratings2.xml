@@ -139,7 +139,7 @@
         app:tabSelectedTextColor="@color/orange"
         app:tabTextAppearance="@style/tabTextStyle"
 
-        android:background="@color/material_dynamic_neutral_variant30"
+        android:background="@color/tab_layout"
         app:tabGravity="fill"
         app:tabMode="scrollable"
         app:layout_constraintEnd_toEndOf="parent"

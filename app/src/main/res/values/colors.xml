@@ -24,4 +24,5 @@
     <color name="grey">#959391</color>
     <color name="activities_background">#40424E</color>
     <color name="other_yellow">#B5AE39</color>
+    <color name="tab_layout">#40484D</color>
 </resources>
