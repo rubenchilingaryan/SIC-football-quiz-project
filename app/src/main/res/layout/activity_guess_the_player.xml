@@ -128,10 +128,11 @@
         android:textColor="@color/white"
         android:textSize="25dp"
         android:fontFamily="@font/exo_2_extrabold_italic"
-        app:layout_constraintTop_toTopOf="@id/guideline60_guess_the_player"
+        app:layout_constraintTop_toBottomOf="@id/image_guess_the_player"
         app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
         app:layout_constraintBottom_toTopOf="@id/answer2_guess_the_player"
-        app:layout_constraintVertical_bias="0.5"/>
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/answer2_guess_the_player"
