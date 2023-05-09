@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView alreadyHaveAnAccount;
     EditText inputEmail,inputPassword,inputConfirmPassword;
     EditText inputUsername;
-    Button registerBtn;
+    Button btnRegister;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
 
@@ -43,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.inputPassword);
         inputConfirmPassword = findViewById(R.id.inputConfirmPassword);
         inputUsername = findViewById(R.id.inputUsername);
-        registerBtn = findViewById(R.id.registerButton);
+        btnRegister = findViewById(R.id.registerButton);
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -53,10 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
             }
         });
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PerformAuth();
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
             inputConfirmPassword.setError("Passwords does not match");
         }else {
             progressDialog.setMessage("Please wait while you are being registered...");
-            progressDialog.setTitle("registration");
+            progressDialog.setTitle("Registration");
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
