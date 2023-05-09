@@ -52,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_player"
         app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
         app:layout_constraintTop_toTopOf="@id/guideline8_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/guideline60_guess_the_player"
         app:shapeAppearanceOverlay="@style/roundImageView" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -65,6 +66,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline2_guess_the_player"
         app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
         app:layout_constraintTop_toTopOf="@id/guideline8_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/guideline60_guess_the_player"
         app:shapeAppearanceOverlay="@style/roundImageView" />
 
     <TextView
@@ -105,11 +107,11 @@
         app:layout_constraintTop_toTopOf="@id/image_guess_the_player" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline90_guess_the_player"
+        android:id="@+id/guideline95_guess_the_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.95" />
 
 
 
@@ -128,7 +130,7 @@
         android:textColor="@color/white"
         android:textSize="25dp"
         android:fontFamily="@font/exo_2_extrabold_italic"
-        app:layout_constraintTop_toBottomOf="@id/image_guess_the_player"
+        app:layout_constraintTop_toBottomOf="@id/guideline60_guess_the_player"
         app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
         app:layout_constraintBottom_toTopOf="@id/answer2_guess_the_player"
         app:layout_constraintVertical_bias="0.5"
@@ -170,7 +172,7 @@
         android:fontFamily="@font/exo_2_extrabold_italic"
         app:layout_constraintTop_toBottomOf="@id/answer3_guess_the_player"
         app:layout_constraintStart_toStartOf="@id/guideline1_guess_the_player"
-        app:layout_constraintBottom_toTopOf="@id/guideline90_guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/guideline95_guess_the_player"
         app:layout_constraintVertical_bias="0.5"/>
 
     <androidx.constraintlayout.widget.Guideline

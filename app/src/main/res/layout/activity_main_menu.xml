@@ -16,6 +16,7 @@
         android:textColor="@color/orange"
         android:textSize="40dp"
         app:layout_constraintTop_toBottomOf="@id/top_bar_main_menu"
+        app:layout_constraintBottom_toTopOf="@id/guideline15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -25,8 +26,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Who is faster"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
         app:layout_constraintTop_toBottomOf="@id/guideline15"
         app:layout_constraintBottom_toTopOf="@id/guideline24"
         android:background="@drawable/mode_buttons"
@@ -40,10 +41,10 @@
         android:text="Who is more expensive"
         style="@style/mode_button"
         android:background="@drawable/mode_buttons"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
-        app:layout_constraintTop_toBottomOf="@id/guideline24"
-        app:layout_constraintBottom_toTopOf="@id/guideline33"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
+        app:layout_constraintTop_toBottomOf="@id/who_is_faster"
+        app:layout_constraintBottom_toTopOf="@id/guess_the_price"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/guess_the_price"
@@ -52,10 +53,10 @@
         android:text="Guess the price"
         style="@style/mode_button"
         android:background="@drawable/mode_buttons"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
-        app:layout_constraintTop_toBottomOf="@id/guideline33"
-        app:layout_constraintBottom_toTopOf="@id/guideline42"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
+        app:layout_constraintTop_toBottomOf="@id/who_is_more_expensive"
+        app:layout_constraintBottom_toTopOf="@id/guess_the_player"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/guess_the_player"
@@ -64,10 +65,10 @@
         android:text="Guess the player"
         style="@style/mode_button"
         android:background="@drawable/mode_buttons"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
-        app:layout_constraintTop_toBottomOf="@id/guideline42"
-        app:layout_constraintBottom_toTopOf="@id/guideline51"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
+        app:layout_constraintTop_toBottomOf="@id/guess_the_price"
+        app:layout_constraintBottom_toTopOf="@id/who_has_scored_more"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/who_has_scored_more"
@@ -76,10 +77,10 @@
         android:text="Who has scored more"
         style="@style/mode_button"
         android:background="@drawable/mode_buttons"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
-        app:layout_constraintTop_toBottomOf="@id/guideline51"
-        app:layout_constraintBottom_toTopOf="@id/guideline60"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
+        app:layout_constraintTop_toBottomOf="@id/guess_the_player"
+        app:layout_constraintBottom_toTopOf="@id/who_has_assisted_more"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/who_has_assisted_more"
@@ -88,10 +89,10 @@
         android:text="Who has assisted more"
         style="@style/mode_button"
         android:background="@drawable/mode_buttons"
-        app:layout_constraintEnd_toEndOf="@id/guideline75"
-        app:layout_constraintStart_toStartOf="@id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/guideline60"
-        app:layout_constraintBottom_toTopOf="@id/guideline69"/>
+        app:layout_constraintEnd_toEndOf="@id/guideline95_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline5_vertical"
+        app:layout_constraintTop_toBottomOf="@id/who_has_scored_more"
+        app:layout_constraintBottom_toTopOf="@id/guideline78"/>
 
 
 
@@ -163,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.78" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2_horizontal"
@@ -173,21 +174,30 @@
         app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2_vertical"
+        android:id="@+id/guideline5_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.03" />
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline95_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/top_bar_main_menu"
-        android:name="com.example.footballquiz.LevelFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:name="com.example.footballquiz.LevelFragment"
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
