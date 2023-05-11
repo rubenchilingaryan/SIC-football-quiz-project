@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText inputEmail,inputPassword;
     Button btnLogin,btnGoogle,btnFacebook;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    ProgressDialog progressDialog;
+    ProgressDialog progressDialog, progressDialogGoogle;
 
     FirebaseAuth mAuth;
     FirebaseDatabase database;
@@ -54,14 +54,14 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.inputLoginPassword);
         btnLogin = findViewById(R.id.loginBtn);
         progressDialog = new ProgressDialog(this);
+        progressDialogGoogle = new ProgressDialog(this);
         btnGoogle = findViewById(R.id.btnGoogle);
         btnFacebook = findViewById(R.id.btnFacebook);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         mUser = mAuth.getCurrentUser();
 
-        progressDialog.setTitle("Creating Account");
-        progressDialog.setMessage("Your account is being created");
+
 
 
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +100,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signIn() {
 
+        progressDialogGoogle.setMessage("Please wait while you are being logged in...");
+        progressDialogGoogle.setTitle("Login");
+        progressDialogGoogle.setCanceledOnTouchOutside(false);
+        progressDialogGoogle.show();
+
         Intent intent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent,RC_SIGN_IN);
 
@@ -132,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialogGoogle.dismiss();
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
 
