@@ -88,9 +88,16 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        mUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(RegisterActivity.this, "Please verify your email it might take a few minutes", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                         progressDialog.dismiss();
-                        sendUserToNextActivity();
-                        Toast.makeText(RegisterActivity.this, "you are successfully registered", Toast.LENGTH_SHORT).show();
+                        sendUserToLoginActivity();
                     }
                     else {
                         progressDialog.dismiss();
@@ -101,8 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private void sendUserToNextActivity() {
-        Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+    private void sendUserToLoginActivity() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
