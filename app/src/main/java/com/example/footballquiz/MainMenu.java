@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.footballquiz.questions.Guess_the_player;
 import com.example.footballquiz.questions.Guess_the_price;
@@ -32,6 +35,11 @@ public class MainMenu extends AppCompatActivity {
         who_has_scored_more = findViewById(R.id.who_has_scored_more);
         who_has_assisted_more = findViewById(R.id.who_has_assisted_more);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
 
 
 
