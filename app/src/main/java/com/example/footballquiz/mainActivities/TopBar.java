@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.footballquiz.R;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class TopBar extends Fragment {
 
     TextView userName, rating;
+    Button back;
 
     public TopBar() {
         // Required empty public constructor
@@ -30,6 +32,16 @@ public class TopBar extends Fragment {
 
         userName = view.findViewById(R.id.username_text);
         rating = view.findViewById(R.id.rating_text);
+        back = view.findViewById(R.id.button_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity() != null) {
+                    getActivity().onBackPressed();
+                }
+            }
+        });
 
         loadUserData();
 

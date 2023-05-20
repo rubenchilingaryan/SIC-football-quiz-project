@@ -18,11 +18,12 @@ import android.widget.TextView;
 
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
+import com.example.footballquiz.questionsMethods.Guess_the_price_Methods;
 import com.google.android.material.slider.Slider;
 
 import java.util.Random;
 
-public class Guess_the_price extends AppCompatActivity {
+public class Guess_the_price extends Guess_the_price_Methods {
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -82,16 +83,15 @@ public class Guess_the_price extends AppCompatActivity {
                     black_screen.setVisibility(View.VISIBLE);
                     real_price.setText(Integer.toString(prices[index]) + " mln €");
                     real_price.setBackgroundColor(Color.GREEN);
+                    showPopUpDialogGuessThePriceIncrease();
                 }else{
                     wrong_anim.setVisibility(View.VISIBLE);
                     black_screen.setVisibility(View.VISIBLE);
                     real_price.setText(Integer.toString(prices[index]) + " mln €");
                     real_price.setBackgroundColor(Color.RED);
+                    showPopUpDialogGuessThePriceDecrease();
                 }
-                showPopUpDialog();
- //              Intent i = new Intent(getApplicationContext(),Guess_the_price_MidMode.class);
- //              startActivity(i);
- //              finish();
+
             }
         });
 
