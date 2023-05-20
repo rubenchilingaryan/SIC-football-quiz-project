@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
 
+        sendUserToStartActivity();
 
 
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -199,9 +200,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sendUserToStartActivity() {
-        Intent intent = new Intent(getApplicationContext(), StartActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
+
 }
