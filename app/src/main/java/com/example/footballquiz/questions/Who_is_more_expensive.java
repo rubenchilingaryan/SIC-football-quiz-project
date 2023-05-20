@@ -19,10 +19,11 @@ import android.widget.TextView;
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
+import com.example.footballquiz.questionsMethods.Who_is_more_expensive_Methods;
 
 import java.util.Random;
 
-public class Who_is_more_expensive extends MethodsActivity {
+public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
 
     ImageView image1,image2,black_screen1,black_screen2;
     TextView player1_price,player2_price,player1_name,player2_name;
@@ -186,7 +187,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveIncrease();
                                     }
                                 },1000);
                             }
@@ -201,7 +202,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveIncrease();
                                     }
                                 },1000);
                             }
@@ -235,7 +236,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveDecrease();
                                     }
                                 },1000);
                             }
@@ -250,7 +251,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveDecrease();
                                     }
                                 },1000);
                             }
@@ -284,7 +285,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveDecrease();
                                     }
                                 },1000);
                             }
@@ -299,7 +300,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveDecrease();
                                     }
                                 },1000);
                             }
@@ -333,7 +334,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveIncrease();
                                     }
                                 },1000);
                             }
@@ -348,7 +349,7 @@ public class Who_is_more_expensive extends MethodsActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensive();
+                                        showPopUpDialogMoreExpensiveIncrease();
                                     }
                                 },1000);
                             }
