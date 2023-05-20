@@ -3,10 +3,15 @@ package com.example.footballquiz.questions;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.animation.TimeInterpolator;
+import android.animation.ValueAnimator;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,27 +31,26 @@ import java.util.Random;
 public class Who_is_faster extends MethodsActivity {
 
 
-
-    ImageView image1,image2,image1_black,image2_black;
-    TextView player1_speed,player2_speed,player1_name,player2_name;
+    ImageView image1, image2, image1_black, image2_black;
+    TextView player1_speed, player2_speed, player1_name, player2_name;
     AppCompatButton back;
 
-    int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
-            R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
-            R.drawable.hector_bellerin,R.drawable.james_rodriguez,R.drawable.jordi_alba,
-            R.drawable.kai_havertz,R.drawable.karim_benzema,R.drawable.kylian_mbappe,
-            R.drawable.luka_modric,R.drawable.mohammed_salah,R.drawable.ousmane_dembele,
-            R.drawable.raphael_varane,R.drawable.rodrygo,R.drawable.ronald_araujo,
-            R.drawable.sergio_busquets,R.drawable.vinicius_junior,R.drawable.virgil_van_dijk,R.drawable.raheem_sterling};
+    int[] images = new int[]{R.drawable.adama_traore, R.drawable.antonio_rudiger, R.drawable.casemiro,
+            R.drawable.cristiano_ronaldo, R.drawable.darwin_nunez, R.drawable.erling_haaland,
+            R.drawable.hector_bellerin, R.drawable.james_rodriguez, R.drawable.jordi_alba,
+            R.drawable.kai_havertz, R.drawable.karim_benzema, R.drawable.kylian_mbappe,
+            R.drawable.luka_modric, R.drawable.mohammed_salah, R.drawable.ousmane_dembele,
+            R.drawable.raphael_varane, R.drawable.rodrygo, R.drawable.ronald_araujo,
+            R.drawable.sergio_busquets, R.drawable.vinicius_junior, R.drawable.virgil_van_dijk, R.drawable.raheem_sterling};
 
-    String[] player_names = new String[]{"Adama Traore","Antonio Rüdiger","Casemiro",
-    "Cristiano Ronaldo","Darwin Núñez","Erling Haaland","Hector Bellerin","James Rodríguez",
-    "Jordi Alba","Kai Havertz","Karim Benzema","Kylian Mbappé","Luka Modrić","Mohamed Salah",
-    "Ousmane Dembélé","Raphaël Varane","Rodrygo","Ronald Araújo","Sergio Busquets",
-    "Vinícius Júnior","Virgil van Dijk","Raheem Sterling"};
+    String[] player_names = new String[]{"Adama Traore", "Antonio Rüdiger", "Casemiro",
+            "Cristiano Ronaldo", "Darwin Núñez", "Erling Haaland", "Hector Bellerin", "James Rodríguez",
+            "Jordi Alba", "Kai Havertz", "Karim Benzema", "Kylian Mbappé", "Luka Modrić", "Mohamed Salah",
+            "Ousmane Dembélé", "Raphaël Varane", "Rodrygo", "Ronald Araújo", "Sergio Busquets",
+            "Vinícius Júnior", "Virgil van Dijk", "Raheem Sterling"};
 
-    double[] speeds = new double[]{36.6,34.5,30.6,34.2,38.0,36.04,34.99,26.1,32.6,32.4,32.0,
-    37.9,30.9,33.9,36.6,32.71,34.0,31.8,30.0,35.4,33.3,33.8};
+    double[] speeds = new double[]{36.6, 34.5, 30.6, 34.2, 38.0, 36.04, 34.99, 26.1, 32.6, 32.4, 32.0,
+            37.9, 30.9, 33.9, 36.6, 32.71, 34.0, 31.8, 30.0, 35.4, 33.3, 33.8};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,19 +70,11 @@ public class Who_is_faster extends MethodsActivity {
 
 
 
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DocumentReference documentRef = firestore.collection("users").document(userId);
-
-
-
-/*        fasterPlayer(image1,image2,image1_black,image2_black,player1_name,player2_name,player1_speed,player2_speed,
-                images,player_names,speeds,back); */
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainMenu.class);
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
                 startActivity(i);
                 finish();
             }
@@ -88,10 +84,10 @@ public class Who_is_faster extends MethodsActivity {
         Random rand = new Random();
         int indexPic1 = rand.nextInt(images.length);
         int indexPic2 = rand.nextInt(images.length);
-        while (true){
-            if(indexPic1 == indexPic2 || speeds[indexPic1] == speeds[indexPic2]) {
+        while (true) {
+            if (indexPic1 == indexPic2 || speeds[indexPic1] == speeds[indexPic2]) {
                 indexPic2 = rand.nextInt(images.length);
-            }else{
+            } else {
                 break;
             }
         }
@@ -104,7 +100,7 @@ public class Who_is_faster extends MethodsActivity {
         player2_speed.setText(Double.toString(speeds[indexPic2]) + " km/h");
 
 
-                    if(speeds[indexPic1]>speeds[indexPic2]){
+        if (speeds[indexPic1] > speeds[indexPic2]) {
             image1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -114,8 +110,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
-                    increaseRating();
-                    showPopUpDialogFaster();
+                    showPopUpDialogFasterIncrease();
                     //                  Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
                     //                  startActivity(i);
                     //                  finish();
@@ -131,14 +126,13 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
-                    decreaseRating();
-                    showPopUpDialogFaster();
+                    showPopUpDialogFasterDecrease();
 //                 Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
 //                 startActivity(i);
 //                 finish();
                 }
             });
-        }else if(speeds[indexPic1]<speeds[indexPic2]) {
+        } else if (speeds[indexPic1] < speeds[indexPic2]) {
             image1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -148,8 +142,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#0FA80A"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
-                    decreaseRating();
-                    showPopUpDialogFaster();
+                    showPopUpDialogFasterDecrease();
                     //                 Intent i = new Intent(getApplicationContext(), Who_is_faster_MidMode.class);
                     //                 startActivity(i);
                     //                 finish();
@@ -165,8 +158,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#0FA80A"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
-                    increaseRating();
-                    showPopUpDialogFaster();
+                    showPopUpDialogFasterIncrease();
 //                  Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
 //                  startActivity(i);
 //                  finish();
@@ -174,7 +166,27 @@ public class Who_is_faster extends MethodsActivity {
             });
         }
     }
-    private void increaseRating(){
+
+    protected void showPopUpDialogFasterIncrease() {
+        // create a dialog instance
+        Dialog dialog = new Dialog(this);
+
+        // set the layout for the dialog
+        dialog.setContentView(R.layout.dialog_layout);
+
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(false);
+
+        // set the title for the dialog
+        dialog.setTitle("Result");
+
+        // find the elements in the custom layout
+        TextView eloTextView = (TextView) dialog.findViewById(R.id.eloTextView);
+        Button returnButton = (Button) dialog.findViewById(R.id.returnButton);
+        Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
+
+        // set the elo rating text
+
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -190,12 +202,30 @@ public class Who_is_faster extends MethodsActivity {
                             // Perform operations on the current score
                             int newScore = currentScore + 15 + rand.nextInt(6);
 
+
                             // Update the field with the new value
                             documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             // Field updated successfully
+                                            eloTextView.setText(Integer.toString(currentScore));
+                                            ValueAnimator animator = ValueAnimator.ofInt(currentScore, newScore);
+                                            animator.setDuration(2000);
+
+                                            TimeInterpolator interpolator = new DecelerateInterpolator();
+
+                                            animator.setInterpolator(interpolator);
+
+                                            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                                @Override
+                                                public void onAnimationUpdate(@NonNull ValueAnimator animation) {
+                                                    int animatedValue = (int) animation.getAnimatedValue();
+                                                    eloTextView.setText("Your new rating: " + String.valueOf(animatedValue));
+                                                }
+                                            });
+
+                                            animator.start();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -217,9 +247,54 @@ public class Who_is_faster extends MethodsActivity {
                         Toast.makeText(Who_is_faster.this, "An error occurred while retrieving the document", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
+        // set the click listener for the return button
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // set the click listener for the next button
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // show the dialog box
+        dialog.show();
     }
 
-    private void decreaseRating(){
+    protected void showPopUpDialogFasterDecrease() {
+        // create a dialog instance
+        Dialog dialog = new Dialog(this);
+
+        // set the layout for the dialog
+        dialog.setContentView(R.layout.dialog_layout);
+
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(false);
+
+        // set the title for the dialog
+        dialog.setTitle("Result");
+
+        // find the elements in the custom layout
+        TextView eloTextView = (TextView) dialog.findViewById(R.id.eloTextView);
+        Button returnButton = (Button) dialog.findViewById(R.id.returnButton);
+        Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
+
+        // set the elo rating text
+
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -235,12 +310,30 @@ public class Who_is_faster extends MethodsActivity {
                             // Perform operations on the current score
                             int newScore = currentScore - (25 + rand.nextInt(6));
 
+
                             // Update the field with the new value
                             documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             // Field updated successfully
+                                            eloTextView.setText(Integer.toString(currentScore));
+                                            ValueAnimator animator = ValueAnimator.ofInt(currentScore, newScore);
+                                            animator.setDuration(2000);
+
+                                            TimeInterpolator interpolator = new DecelerateInterpolator();
+
+                                            animator.setInterpolator(interpolator);
+
+                                            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                                @Override
+                                                public void onAnimationUpdate(@NonNull ValueAnimator animation) {
+                                                    int animatedValue = (int) animation.getAnimatedValue();
+                                                    eloTextView.setText("Your new rating: " + String.valueOf(animatedValue));
+                                                }
+                                            });
+
+                                            animator.start();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -262,5 +355,31 @@ public class Who_is_faster extends MethodsActivity {
                         Toast.makeText(Who_is_faster.this, "An error occurred while retrieving the document", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
+        // set the click listener for the return button
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // set the click listener for the next button
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // show the dialog box
+        dialog.show();
     }
 }
