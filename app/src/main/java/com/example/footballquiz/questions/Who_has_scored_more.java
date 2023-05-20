@@ -1,7 +1,6 @@
 package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.animation.Animator;
@@ -17,7 +16,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.footballquiz.MainMenu;
+import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
 

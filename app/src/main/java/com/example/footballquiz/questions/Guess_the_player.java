@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.footballquiz.MainMenu;
+import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
 
 import java.util.Random;

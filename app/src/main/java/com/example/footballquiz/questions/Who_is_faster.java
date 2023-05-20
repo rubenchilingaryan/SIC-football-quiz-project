@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.footballquiz.MainMenu;
+import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
 import com.google.android.gms.tasks.OnFailureListener;

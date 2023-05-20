@@ -1,4 +1,4 @@
-package com.example.footballquiz;
+package com.example.footballquiz.mainActivities;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

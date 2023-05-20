@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.footballquiz.R;
-import com.example.footballquiz.StartActivity;
+import com.example.footballquiz.mainActivities.StartActivity;
 import com.example.footballquiz.ratings.recyclerView.ModesModel;
 import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
 import com.example.footballquiz.ratings.VPAdapter;

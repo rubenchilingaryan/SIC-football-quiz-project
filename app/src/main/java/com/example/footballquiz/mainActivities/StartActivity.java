@@ -1,4 +1,4 @@
-package com.example.footballquiz;
+package com.example.footballquiz.mainActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,13 +8,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.footballquiz.MainMenu;
+import com.example.footballquiz.R;
 import com.example.footballquiz.ratings.activities.RatingsActivity;
 
 public class StartActivity extends AppCompatActivity {
@@ -62,6 +61,7 @@ public class StartActivity extends AppCompatActivity {
         Fragment topBarFragment = new TopBar();
         fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
         fragmentTransaction.commit();
+
     }
 
     void showDailyMode() {

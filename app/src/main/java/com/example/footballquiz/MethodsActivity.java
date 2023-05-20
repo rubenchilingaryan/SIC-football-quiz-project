@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.questions.Who_is_faster;
 import com.example.footballquiz.questions.Who_is_more_expensive;
 
@@ -67,7 +68,7 @@ public class MethodsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(),MainMenu.class);
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
                 startActivity(i);
                 finish();
             }
