@@ -14,16 +14,21 @@ import com.example.footballquiz.R;
 import com.example.footballquiz.ratings.recyclerView.M_RecyclerViewAdapter;
 import com.example.footballquiz.ratings.recyclerView.ModesModel;
 import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
 public class FragmentScorer extends Fragment implements RecyclerViewInterface {
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
-    int ratingBest = 17001;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,25 +37,44 @@ public class FragmentScorer extends Fragment implements RecyclerViewInterface {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_scorer);
 
-        setUpModesModels();
-
-        M_RecyclerViewAdapter adapter = new M_RecyclerViewAdapter(getContext(),modesModels,this);
+        M_RecyclerViewAdapter adapter = new M_RecyclerViewAdapter(getContext(), modesModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Query leaderboardQuery = db.collection("users")
+                .orderBy("Who has scored more rating", Query.Direction.DESCENDING)
+                .limit(100);
+
+        leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<DocumentSnapshot> documents = task.getResult().getDocuments();
+                    Random rand = new Random();
+                    int position = 1;
+
+                    for (DocumentSnapshot document : documents) {
+                        String username = document.getString("Username");
+                        int rating = document.getLong("Who has scored more rating").intValue();
+
+                        modesModels.add(new ModesModel(
+                                Integer.toString(position),
+                                username,
+                                Integer.toString(rating),
+                                R.drawable.user_icon
+                        ));
+
+                        position++;
+                    }
+
+                    // Update the RecyclerView adapter with the leaderboard data
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
         return view;
-    }
-
-    private void setUpModesModels() {
-
-        Random rand = new Random();
-
-
-        for (int i = 1; i < 101; i++) {
-            modesModels.add(new ModesModel(Integer.toString(i),"user_" + Integer.toString(rand.nextInt(10000)),
-                    Integer.toString(ratingBest),R.drawable.user_icon));
-            ratingBest-=rand.nextInt(150);
-        }
     }
 
     @Override
