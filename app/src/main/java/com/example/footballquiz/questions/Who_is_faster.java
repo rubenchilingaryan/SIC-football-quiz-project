@@ -1,5 +1,6 @@
 package com.example.footballquiz.questions;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
@@ -8,10 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.footballquiz.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
@@ -58,6 +66,10 @@ public class Who_is_faster extends MethodsActivity {
 
 
 
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
+
 
 
 /*        fasterPlayer(image1,image2,image1_black,image2_black,player1_name,player2_name,player1_speed,player2_speed,
@@ -92,8 +104,7 @@ public class Who_is_faster extends MethodsActivity {
         player2_speed.setText(Double.toString(speeds[indexPic2]) + " km/h");
 
 
-
-        if(speeds[indexPic1]>speeds[indexPic2]){
+                    if(speeds[indexPic1]>speeds[indexPic2]){
             image1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -103,6 +114,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    increaseRating();
                     showPopUpDialogFaster();
                     //                  Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
                     //                  startActivity(i);
@@ -119,6 +131,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    decreaseRating();
                     showPopUpDialogFaster();
 //                 Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
 //                 startActivity(i);
@@ -135,6 +148,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#0FA80A"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    decreaseRating();
                     showPopUpDialogFaster();
                     //                 Intent i = new Intent(getApplicationContext(), Who_is_faster_MidMode.class);
                     //                 startActivity(i);
@@ -151,6 +165,7 @@ public class Who_is_faster extends MethodsActivity {
                     player2_speed.setTextColor(Color.parseColor("#0FA80A"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    increaseRating();
                     showPopUpDialogFaster();
 //                  Intent i = new Intent(getApplicationContext(),Who_is_faster_MidMode.class);
 //                  startActivity(i);
@@ -158,5 +173,94 @@ public class Who_is_faster extends MethodsActivity {
                 }
             });
         }
+    }
+    private void increaseRating(){
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
+
+        documentRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // Retrieve the current value of the field
+                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
+
+                            Random rand = new Random();
+                            // Perform operations on the current score
+                            int newScore = currentScore + 15 + rand.nextInt(6);
+
+                            // Update the field with the new value
+                            documentRef.update("Who is faster rating", newScore)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            // Field updated successfully
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // An error occurred while updating the field
+                                            Toast.makeText(Who_is_faster.this, "An error occurred while updating the field", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            // Document does not exist
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // An error occurred while retrieving the document
+                        Toast.makeText(Who_is_faster.this, "An error occurred while retrieving the document", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void decreaseRating(){
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
+
+        documentRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // Retrieve the current value of the field
+                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
+
+                            Random rand = new Random();
+                            // Perform operations on the current score
+                            int newScore = currentScore - (25 + rand.nextInt(6));
+
+                            // Update the field with the new value
+                            documentRef.update("Who is faster rating", newScore)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            // Field updated successfully
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // An error occurred while updating the field
+                                            Toast.makeText(Who_is_faster.this, "An error occurred while updating the field", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            // Document does not exist
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // An error occurred while retrieving the document
+                        Toast.makeText(Who_is_faster.this, "An error occurred while retrieving the document", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
