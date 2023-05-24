@@ -19,10 +19,11 @@ import android.widget.TextView;
 
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
+import com.example.footballquiz.questionsMethods.Who_has_assisted_more_methods;
 
 import java.util.Random;
 
-public class Who_has_assisted_more extends AppCompatActivity {
+public class Who_has_assisted_more extends Who_has_assisted_more_methods {
 
     ImageView image1, image2, black_screen1, black_screen2;
     TextView player1_name, player2_name, player1_assists, player2_assists;
@@ -150,9 +151,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                    startActivity(i);
-                                    finish();
+                                    showPopUpDialogWhoHasAssistedMoreIncrease();
                                 }
                             }, 1000);
                         }
@@ -185,9 +184,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                    startActivity(i);
-                                    finish();
+                                    showPopUpDialogWhoHasAssistedMoreDecrease();
                                 }
                             }, 1000);
                         }
@@ -220,9 +217,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                    startActivity(i);
-                                    finish();
+                                    showPopUpDialogWhoHasAssistedMoreDecrease();
                                 }
                             }, 1000);
                         }
@@ -255,9 +250,7 @@ public class Who_has_assisted_more extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
-                                    startActivity(i);
-                                    finish();
+                                    showPopUpDialogWhoHasAssistedMoreIncrease();
                                 }
                             }, 1000);
                         }

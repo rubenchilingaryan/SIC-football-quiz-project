@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.footballquiz.R;
-import com.example.footballquiz.questions.Guess_the_player;
+import com.example.footballquiz.questions.GuessThePlayer;
 import com.example.footballquiz.questions.Guess_the_price;
 import com.example.footballquiz.questions.Who_has_assisted_more;
 import com.example.footballquiz.questions.Who_has_scored_more;
@@ -73,7 +73,7 @@ public class MainMenu extends AppCompatActivity {
         guess_the_player.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Guess_the_player.class);
+                Intent i = new Intent(getApplicationContext(), GuessThePlayer.class);
                 startActivity(i);
                 finish();
             }

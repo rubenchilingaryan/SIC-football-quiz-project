@@ -2,6 +2,9 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,6 +22,7 @@ import android.widget.TextView;
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
+import com.example.footballquiz.mainActivities.TopBar;
 import com.example.footballquiz.questionsMethods.Who_is_more_expensive_Methods;
 
 import java.util.Random;
@@ -27,7 +31,6 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
 
     ImageView image1,image2,black_screen1,black_screen2;
     TextView player1_price,player2_price,player1_name,player2_name;
-    AppCompatButton back;
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -58,19 +61,16 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
         player2_price = findViewById(R.id.player2_price);
         player1_name = findViewById(R.id.player1_name_expensive);
         player2_name = findViewById(R.id.player2_name_expensive);
-        back = findViewById(R.id.button_back_more_expensive);
 
 /*        expensivePlayer(image1,image2,black_screen1,black_screen2,player1_name,player2_name,player1_price,
                 player2_price,images,player_names,prices,back);*/
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainMenu.class);
-                startActivity(i);
-                finish();
-            }
-        });
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
+
 
         Random rand = new Random();
         int indexPic1 = rand.nextInt(images.length);
@@ -169,7 +169,6 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_price.setVisibility(View.VISIBLE);
 //                    player1_price.setTextColor(Color.parseColor("#0FA80A"));
                     player2_price.setVisibility(View.VISIBLE);
@@ -218,7 +217,6 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_price.setVisibility(View.VISIBLE);
 //                    player1_price.setTextColor(Color.parseColor("#0FA80A"));
                     player2_price.setVisibility(View.VISIBLE);
@@ -267,7 +265,6 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_price.setVisibility(View.VISIBLE);
 //                    player1_price.setTextColor(Color.parseColor("#CA0616"));
                     player2_price.setVisibility(View.VISIBLE);
@@ -316,7 +313,6 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_price.setVisibility(View.VISIBLE);
 //                    player1_price.setTextColor(Color.parseColor("#CA0616"));
                     player2_price.setVisibility(View.VISIBLE);

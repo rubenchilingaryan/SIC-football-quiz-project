@@ -177,25 +177,25 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-
-                        if(mUser.isEmailVerified()){
+                    if (task.isSuccessful()) {
+                        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+                        if (mUser != null && mUser.isEmailVerified()) {
                             sendUserToStartActivity();
-                            Toast.makeText(LoginActivity.this, "you are successfully logged in", Toast.LENGTH_SHORT).show();
-                        }else{
+                            Toast.makeText(LoginActivity.this, "You are successfully logged in", Toast.LENGTH_SHORT).show();
+                        } else {
                             Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
                         }
-
                         progressDialog.dismiss();
-                    }else {
+                    } else {
                         progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
+
         }
     }
 

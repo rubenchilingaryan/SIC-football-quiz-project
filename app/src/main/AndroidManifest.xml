@@ -93,7 +93,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Guess_the_player"
+            android:name=".questions.GuessThePlayer"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"

@@ -21,7 +21,7 @@ import com.example.footballquiz.R;
 
 import java.util.Random;
 
-public class Guess_the_player extends AppCompatActivity {
+public class GuessThePlayer extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
@@ -192,7 +192,7 @@ public class Guess_the_player extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(),Guess_the_player.class);
+                Intent i = new Intent(getApplicationContext(), GuessThePlayer.class);
                 startActivity(i);
                 finish();
             }

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.13" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -33,19 +33,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.98" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline525"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.525" />
+        app:layout_constraintGuide_percent="0.555" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/exo_2_extrabold"
         android:gravity="center"
         android:text="Who is more expensive?"
@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/fragmentContainerView" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/player1_image_expensive"
@@ -194,13 +194,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.03" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_back_more_expensive"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/back_arrow"
-        app:layout_constraintStart_toStartOf="@id/guideline0.4_2"
-        app:layout_constraintTop_toTopOf="@id/textView"
-        app:layout_constraintBottom_toBottomOf="@id/textView"/>
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:name="com.example.footballquiz.mainActivities.TopBar"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
