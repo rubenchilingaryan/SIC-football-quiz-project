@@ -1,35 +1,21 @@
 package com.example.footballquiz.questions;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
-import com.example.footballquiz.questionsMethods.Who_is_faster_Methods;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.footballquiz.questionsMethods.WhoIsFasterMethods;
 
 import java.util.Random;
 
-public class Who_is_faster extends Who_is_faster_Methods {
+public class WhoIsFaster extends WhoIsFasterMethods {
 
 
     ImageView image1, image2, image1_black, image2_black;

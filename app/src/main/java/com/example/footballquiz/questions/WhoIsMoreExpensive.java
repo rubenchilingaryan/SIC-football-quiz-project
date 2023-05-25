@@ -1,7 +1,6 @@
 package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,7 +9,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,15 +17,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
 import com.example.footballquiz.mainActivities.TopBar;
-import com.example.footballquiz.questionsMethods.Who_is_more_expensive_Methods;
+import com.example.footballquiz.questionsMethods.WhoIsMoreExpensiveMethods;
 
 import java.util.Random;
 
-public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
+public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
 
     ImageView image1,image2,black_screen1,black_screen2;
     TextView player1_price,player2_price,player1_name,player2_name;
@@ -186,9 +182,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveIncrease();
+                                        ratingIncrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 
@@ -201,9 +197,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveIncrease();
+                                        ratingIncrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
                     //                 Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -234,9 +230,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveDecrease();
+                                        ratingDecrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 
@@ -249,9 +245,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveDecrease();
+                                        ratingDecrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
                     //                Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -282,9 +278,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveDecrease();
+                                        ratingDecrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 
@@ -297,9 +293,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveDecrease();
+                                        ratingDecrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -330,9 +326,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveIncrease();
+                                        ratingIncrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 
@@ -345,9 +341,9 @@ public class Who_is_more_expensive extends Who_is_more_expensive_Methods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        showPopUpDialogMoreExpensiveIncrease();
+                                        ratingIncrease();
                                     }
-                                },1000);
+                                },0);
                             }
                         });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);

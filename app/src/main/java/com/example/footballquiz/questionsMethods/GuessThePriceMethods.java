@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.questions.Who_is_faster;
+import com.example.footballquiz.questions.GuessThePrice;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,8 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
-public class Who_is_faster_Methods extends AppCompatActivity {
-    protected void showPopUpDialogFasterIncrease() {
+public class GuessThePriceMethods extends AppCompatActivity {
+    protected void showPopUpDialogGuessThePriceDecrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -45,7 +45,6 @@ public class Who_is_faster_Methods extends AppCompatActivity {
         Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
 
         // set the elo rating text
-
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -55,15 +54,15 @@ public class Who_is_faster_Methods extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Guess the price rating").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
-                            int newScore = currentScore + 15 + rand.nextInt(6);
+                            int newScore = currentScore - (15 + rand.nextInt(6));
 
 
                             // Update the field with the new value
-                            documentRef.update("Who is faster rating", newScore)
+                            documentRef.update("Guess the price rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -107,7 +106,6 @@ public class Who_is_faster_Methods extends AppCompatActivity {
                     }
                 });
 
-
         // set the click listener for the return button
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +122,7 @@ public class Who_is_faster_Methods extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                Intent i = new Intent(getApplicationContext(), GuessThePrice.class);
                 startActivity(i);
                 finish();
             }
@@ -133,8 +131,7 @@ public class Who_is_faster_Methods extends AppCompatActivity {
         // show the dialog box
         dialog.show();
     }
-
-    protected void showPopUpDialogFasterDecrease() {
+    protected void showPopUpDialogGuessThePriceIncrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -153,7 +150,6 @@ public class Who_is_faster_Methods extends AppCompatActivity {
         Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
 
         // set the elo rating text
-
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -163,15 +159,15 @@ public class Who_is_faster_Methods extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Guess the price rating").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
-                            int newScore = currentScore - (25 + rand.nextInt(6));
+                            int newScore = currentScore + (25 + rand.nextInt(6));
 
 
                             // Update the field with the new value
-                            documentRef.update("Who is faster rating", newScore)
+                            documentRef.update("Guess the price rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -215,7 +211,6 @@ public class Who_is_faster_Methods extends AppCompatActivity {
                     }
                 });
 
-
         // set the click listener for the return button
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,7 +227,7 @@ public class Who_is_faster_Methods extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                Intent i = new Intent(getApplicationContext(), GuessThePrice.class);
                 startActivity(i);
                 finish();
             }

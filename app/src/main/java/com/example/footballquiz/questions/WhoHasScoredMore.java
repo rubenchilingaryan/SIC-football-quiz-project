@@ -22,7 +22,7 @@ import com.example.footballquiz.R;
 
 import java.util.Random;
 
-public class Who_has_scored_more extends MethodsActivity {
+public class WhoHasScoredMore extends MethodsActivity {
 
     ImageView image1,image2,black_screen1,black_screen2;
     TextView player1_name,player2_name,player1_goals,player2_goals;
@@ -150,7 +150,7 @@ public class Who_has_scored_more extends MethodsActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
                                     startActivity(i);
                                     finish();
                                 }
@@ -186,7 +186,7 @@ public class Who_has_scored_more extends MethodsActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
                                     startActivity(i);
                                     finish();
                                 }
@@ -221,7 +221,7 @@ public class Who_has_scored_more extends MethodsActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
                                     startActivity(i);
                                     finish();
                                 }
@@ -256,7 +256,7 @@ public class Who_has_scored_more extends MethodsActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
                                     startActivity(i);
                                     finish();
                                 }

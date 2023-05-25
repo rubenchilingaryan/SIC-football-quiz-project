@@ -10,6 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.footballquiz.R;
+import com.example.footballquiz.questions.GuessThePlayer;
+import com.example.footballquiz.questions.GuessThePrice;
+import com.example.footballquiz.questions.WhoHasAssistedMore;
+import com.example.footballquiz.questions.WhoHasScoredMore;
+import com.example.footballquiz.questions.WhoIsFaster;
+import com.example.footballquiz.questions.WhoIsMoreExpensive;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,8 +65,21 @@ public class TopBar extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
+                            long userRating = documentSnapshot.getLong("Who is faster rating");;
                             String username = documentSnapshot.getString("Username");
-                            long userRating = documentSnapshot.getLong("Who is faster rating");
+                            if(getActivity() instanceof WhoIsFaster) {
+                                userRating = documentSnapshot.getLong("Who is faster rating");
+                            }else if(getActivity() instanceof WhoIsMoreExpensive){
+                                userRating = documentSnapshot.getLong("Who is more expensive rating");
+                            }else if(getActivity() instanceof GuessThePrice){
+                                userRating = documentSnapshot.getLong("Guess the price rating");
+                            } else if(getActivity() instanceof GuessThePlayer){
+                                userRating = documentSnapshot.getLong("Guess the player rating");
+                            } else if(getActivity() instanceof WhoHasAssistedMore){
+                                userRating = documentSnapshot.getLong("Who has assisted more rating");
+                            } else if (getActivity() instanceof WhoHasScoredMore) {
+                                userRating = documentSnapshot.getLong("Who has assisted more rating");
+                            }
                             updateTopBar(username, userRating);
                         } else {
                             Toast.makeText(getActivity(), "User data not found", Toast.LENGTH_SHORT).show();

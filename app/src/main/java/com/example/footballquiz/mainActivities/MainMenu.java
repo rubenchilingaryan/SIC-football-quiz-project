@@ -12,11 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.questions.GuessThePlayer;
-import com.example.footballquiz.questions.Guess_the_price;
-import com.example.footballquiz.questions.Who_has_assisted_more;
-import com.example.footballquiz.questions.Who_has_scored_more;
-import com.example.footballquiz.questions.Who_is_faster;
-import com.example.footballquiz.questions.Who_is_more_expensive;
+import com.example.footballquiz.questions.GuessThePrice;
+import com.example.footballquiz.questions.WhoHasAssistedMore;
+import com.example.footballquiz.questions.WhoHasScoredMore;
+import com.example.footballquiz.questions.WhoIsFaster;
+import com.example.footballquiz.questions.WhoIsMoreExpensive;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class MainMenu extends AppCompatActivity {
         who_is_faster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsFaster.class);
                 startActivity(i);
                 finish();
             }
@@ -55,7 +55,7 @@ public class MainMenu extends AppCompatActivity {
         who_is_more_expensive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Who_is_more_expensive.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsMoreExpensive.class);
                 startActivity(i);
                 finish();
             }
@@ -64,7 +64,7 @@ public class MainMenu extends AppCompatActivity {
         guess_the_price.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Guess_the_price.class);
+                Intent i = new Intent(getApplicationContext(), GuessThePrice.class);
                 startActivity(i);
                 finish();
             }
@@ -82,7 +82,7 @@ public class MainMenu extends AppCompatActivity {
         who_has_scored_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Who_has_scored_more.class);
+                Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
                 startActivity(i);
                 finish();
             }
@@ -91,7 +91,7 @@ public class MainMenu extends AppCompatActivity {
         who_has_assisted_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Who_has_assisted_more.class);
+                Intent i = new Intent(getApplicationContext(), WhoHasAssistedMore.class);
                 startActivity(i);
                 finish();
             }

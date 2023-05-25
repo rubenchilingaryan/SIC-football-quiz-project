@@ -1,29 +1,23 @@
 package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
-import com.example.footballquiz.questionsMethods.Guess_the_price_Methods;
+import com.example.footballquiz.questionsMethods.GuessThePriceMethods;
 import com.google.android.material.slider.Slider;
 
 import java.util.Random;
 
-public class Guess_the_price extends Guess_the_price_Methods {
+public class GuessThePrice extends GuessThePriceMethods {
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,

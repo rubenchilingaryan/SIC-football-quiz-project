@@ -1,14 +1,11 @@
 package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,17 +14,15 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
-import com.example.footballquiz.questionsMethods.Who_has_assisted_more_methods;
+import com.example.footballquiz.questionsMethods.WhoHasAssistedMoreMethods;
 
 import java.util.Random;
 
-public class Who_has_assisted_more extends Who_has_assisted_more_methods {
+public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
 
     ImageView image1, image2, black_screen1, black_screen2;
     TextView player1_name, player2_name, player1_assists, player2_assists;
-    AppCompatButton back;
 
     int[] images = new int[]{R.drawable.adama_traore, R.drawable.antonio_rudiger, R.drawable.casemiro,
             R.drawable.cristiano_ronaldo, R.drawable.darwin_nunez, R.drawable.erling_haaland,
@@ -60,7 +55,6 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
         player2_name = findViewById(R.id.player2_name_assisted_more);
         player1_assists = findViewById(R.id.player1_assists);
         player2_assists = findViewById(R.id.player2_assists);
-        back = findViewById(R.id.button_back_assisted_more);
 
 
         Random rand = new Random();
@@ -134,7 +128,6 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_assists.setVisibility(View.VISIBLE);
                     //                   player1_Assists.setTextColor(Color.parseColor("#0FA80A"));
                     player2_assists.setVisibility(View.VISIBLE);
@@ -167,7 +160,6 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_assists.setVisibility(View.VISIBLE);
 //                    player1_Assists.setTextColor(Color.parseColor("#0FA80A"));
                     player2_assists.setVisibility(View.VISIBLE);
@@ -200,7 +192,6 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_assists.setVisibility(View.VISIBLE);
                     //                   player1_Assists.setTextColor(Color.parseColor("#CA0616"));
                     player2_assists.setVisibility(View.VISIBLE);
@@ -233,7 +224,6 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_assists.setVisibility(View.VISIBLE);
                     //                   player1_Assists.setTextColor(Color.parseColor("#CA0616"));
                     player2_assists.setVisibility(View.VISIBLE);
@@ -262,14 +252,7 @@ public class Who_has_assisted_more extends Who_has_assisted_more_methods {
 //                   finish();
                 }
             });
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), MainMenu.class);
-                    startActivity(i);
-                    finish();
-                }
-            });
+
 
         }
     }

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.questions.Who_is_more_expensive;
+import com.example.footballquiz.questions.WhoIsFaster;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,8 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
-public class Who_is_more_expensive_Methods extends AppCompatActivity {
-    protected void showPopUpDialogMoreExpensiveDecrease() {
+public class WhoIsFasterMethods extends AppCompatActivity {
+    protected void showPopUpDialogFasterIncrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -45,6 +45,7 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
         Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
 
         // set the elo rating text
+
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -54,15 +55,15 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Who is more expensive rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
-                            int newScore = currentScore - (25 + rand.nextInt(6));
+                            int newScore = currentScore + 15 + rand.nextInt(6);
 
 
                             // Update the field with the new value
-                            documentRef.update("Who is more expensive rating", newScore)
+                            documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -105,6 +106,7 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "An error occurred while retrieving the document", Toast.LENGTH_SHORT).show();
                     }
                 });
+
 
         // set the click listener for the return button
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +124,7 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_more_expensive.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsFaster.class);
                 startActivity(i);
                 finish();
             }
@@ -131,7 +133,8 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
         // show the dialog box
         dialog.show();
     }
-    protected void showPopUpDialogMoreExpensiveIncrease() {
+
+    protected void showPopUpDialogFasterDecrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -150,45 +153,25 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
         Button nextButton = (Button) dialog.findViewById(R.id.nextButton);
 
         // set the elo rating text
+
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
-
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), MainMenu.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        // set the click listener for the next button
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_more_expensive.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         documentRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Who is more expensive rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Who is faster rating").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
-                            int newScore = currentScore + (15 + rand.nextInt(6));
+                            int newScore = currentScore - (25 + rand.nextInt(6));
 
 
                             // Update the field with the new value
-                            documentRef.update("Who is more expensive rating", newScore)
+                            documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -210,8 +193,6 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
                                             });
 
                                             animator.start();
-
-                                            dialog.show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -235,7 +216,29 @@ public class Who_is_more_expensive_Methods extends AppCompatActivity {
                 });
 
 
+        // set the click listener for the return button
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
+        // set the click listener for the next button
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(getApplicationContext(), WhoIsFaster.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
+        // show the dialog box
+        dialog.show();
     }
 }

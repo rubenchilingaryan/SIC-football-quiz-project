@@ -15,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.questions.Guess_the_price;
-import com.example.footballquiz.questions.Who_is_more_expensive;
+import com.example.footballquiz.questions.WhoHasAssistedMore;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,8 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
-public class Guess_the_price_Methods extends AppCompatActivity {
-    protected void showPopUpDialogGuessThePriceDecrease() {
+public class WhoHasAssistedMoreMethods extends AppCompatActivity {
+    protected void showPopUpDialogWhoHasAssistedMoreDecrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -55,15 +54,15 @@ public class Guess_the_price_Methods extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Guess the price rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Who has assisted more").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
-                            int newScore = currentScore - (15 + rand.nextInt(6));
+                            int newScore = currentScore - (25 + rand.nextInt(6));
 
 
                             // Update the field with the new value
-                            documentRef.update("Guess the price rating", newScore)
+                            documentRef.update("Who has assisted more", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -123,7 +122,7 @@ public class Guess_the_price_Methods extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Guess_the_price.class);
+                Intent i = new Intent(getApplicationContext(), WhoHasAssistedMore.class);
                 startActivity(i);
                 finish();
             }
@@ -132,7 +131,7 @@ public class Guess_the_price_Methods extends AppCompatActivity {
         // show the dialog box
         dialog.show();
     }
-    protected void showPopUpDialogGuessThePriceIncrease() {
+    protected void showPopUpDialogWhoHasAssistedMoreIncrease() {
         // create a dialog instance
         Dialog dialog = new Dialog(this);
 
@@ -160,7 +159,7 @@ public class Guess_the_price_Methods extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             // Retrieve the current value of the field
-                            int currentScore = documentSnapshot.getLong("Guess the price rating").intValue();
+                            int currentScore = documentSnapshot.getLong("Who has assisted more").intValue();
 
                             Random rand = new Random();
                             // Perform operations on the current score
@@ -168,7 +167,7 @@ public class Guess_the_price_Methods extends AppCompatActivity {
 
 
                             // Update the field with the new value
-                            documentRef.update("Guess the price rating", newScore)
+                            documentRef.update("Who has assisted more", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -228,7 +227,7 @@ public class Guess_the_price_Methods extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Guess_the_price.class);
+                Intent i = new Intent(getApplicationContext(), WhoHasAssistedMore.class);
                 startActivity(i);
                 finish();
             }

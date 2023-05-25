@@ -15,8 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footballquiz.mainActivities.MainMenu;
-import com.example.footballquiz.questions.Who_is_faster;
-import com.example.footballquiz.questions.Who_is_more_expensive;
+import com.example.footballquiz.questions.WhoIsFaster;
+import com.example.footballquiz.questions.WhoIsMoreExpensive;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -126,7 +126,7 @@ public class MethodsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsFaster.class);
                 startActivity(i);
                 finish();
             }
@@ -234,7 +234,7 @@ public class MethodsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_faster.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsFaster.class);
                 startActivity(i);
                 finish();
             }
@@ -302,7 +302,7 @@ public class MethodsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(getApplicationContext(), Who_is_more_expensive.class);
+                Intent i = new Intent(getApplicationContext(), WhoIsMoreExpensive.class);
                 startActivity(i);
                 finish();
             }

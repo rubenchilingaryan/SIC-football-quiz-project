@@ -72,21 +72,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Who_is_faster"
+            android:name=".questions.WhoIsFaster"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Who_is_more_expensive"
+            android:name=".questions.WhoIsMoreExpensive"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Guess_the_price"
+            android:name=".questions.GuessThePrice"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -100,14 +100,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Who_has_scored_more"
+            android:name=".questions.WhoHasScoredMore"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".questions.Who_has_assisted_more"
+            android:name=".questions.WhoHasAssistedMore"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
