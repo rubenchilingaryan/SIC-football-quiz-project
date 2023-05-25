@@ -2,6 +2,9 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
+import com.example.footballquiz.mainActivities.TopBar;
 import com.example.footballquiz.questionsMethods.GuessThePriceMethods;
 import com.google.android.material.slider.Slider;
 
@@ -38,7 +42,6 @@ public class GuessThePrice extends GuessThePriceMethods {
     ImageView image,black_screen;
     TextView player_name,price,submit,right_anim,wrong_anim,real_price;
     Slider slider;
-    AppCompatButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,12 @@ public class GuessThePrice extends GuessThePriceMethods {
         wrong_anim = findViewById(R.id.wrong_answer_guess_the_price);
         real_price = findViewById(R.id.real_price_guess_the_price);
         slider = findViewById(R.id.slider_guess_the_power);
-        back = findViewById(R.id.button_back_guess_the_price);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
 
         Random random = new Random();
         int index = random.nextInt(images.length);
@@ -77,26 +85,19 @@ public class GuessThePrice extends GuessThePriceMethods {
                     black_screen.setVisibility(View.VISIBLE);
                     real_price.setText(Integer.toString(prices[index]) + " mln €");
                     real_price.setBackgroundColor(Color.GREEN);
-                    showPopUpDialogGuessThePriceIncrease();
+                    ratingIncrease();
                 }else{
                     wrong_anim.setVisibility(View.VISIBLE);
                     black_screen.setVisibility(View.VISIBLE);
                     real_price.setText(Integer.toString(prices[index]) + " mln €");
                     real_price.setBackgroundColor(Color.RED);
-                    showPopUpDialogGuessThePriceDecrease();
+                    ratingDecrease();
                 }
 
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainMenu.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
 
     }
 }
