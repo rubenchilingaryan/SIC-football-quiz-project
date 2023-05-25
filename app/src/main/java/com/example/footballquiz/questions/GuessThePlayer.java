@@ -15,13 +15,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.R;
+import com.example.footballquiz.mainActivities.TopBar;
+import com.example.footballquiz.questionsMethods.GuessThePlayerMethods;
 
 import java.util.Random;
 
-public class GuessThePlayer extends AppCompatActivity {
+public class GuessThePlayer extends GuessThePlayerMethods {
 
     @Override
     public void onBackPressed() {
@@ -42,7 +47,6 @@ public class GuessThePlayer extends AppCompatActivity {
         TextView wrong_anim = findViewById(R.id.wrong_answer_guess_the_player);
         TextView right_anim = findViewById(R.id.right_answer_guess_the_player);
         TextView[] answers = {ans1, ans2, ans3, ans4};
-        AppCompatButton back = findViewById(R.id.button_back_guess_the_player);
 
         int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
                 R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -58,14 +62,13 @@ public class GuessThePlayer extends AppCompatActivity {
                 "Ousmane Dembélé","Raphaël Varane","Rodrygo","Ronald Araújo","Sergio Busquets",
                 "Vinícius Júnior","Virgil van Dijk","Raheem Sterling"};
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainMenu.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
+
 
         Random rand = new Random();
 
@@ -110,10 +113,7 @@ public class GuessThePlayer extends AppCompatActivity {
                         answers[indexAns].setTextColor(Color.GREEN);
                         answers[finalI].setTextColor(Color.RED);
                         black_screen.setVisibility(View.VISIBLE);
-                        showPopUpDialog();
-//                      Intent i = new Intent(Guess_the_player.this, Guess_the_player_MidMode.class);
-//                      startActivity(i);
-//                      finish();
+                        ratingDecrease();
                     }
                 });
             }
@@ -124,10 +124,8 @@ public class GuessThePlayer extends AppCompatActivity {
                         right_anim.setVisibility(View.VISIBLE);
                         answers[indexAns].setTextColor(Color.GREEN);
                         black_screen.setVisibility(View.VISIBLE);
-                        showPopUpDialog();
-//                       Intent i = new Intent(Guess_the_player.this, Guess_the_player_MidMode.class);
-//                       startActivity(i);
-//                       finish();
+                        ratingIncrease();
+
                     }
                 });
             }
