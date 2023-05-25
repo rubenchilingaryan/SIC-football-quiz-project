@@ -1,6 +1,9 @@
 package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.footballquiz.R;
+import com.example.footballquiz.mainActivities.TopBar;
 import com.example.footballquiz.questionsMethods.WhoHasAssistedMoreMethods;
 
 import java.util.Random;
@@ -55,6 +59,12 @@ public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
         player2_name = findViewById(R.id.player2_name_assisted_more);
         player1_assists = findViewById(R.id.player1_assists);
         player2_assists = findViewById(R.id.player2_assists);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
 
 
         Random rand = new Random();
@@ -141,12 +151,7 @@ public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_assists.setTextColor(Color.parseColor("#0FA80A"));
                             player2_assists.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogWhoHasAssistedMoreIncrease();
-                                }
-                            }, 1000);
+                            ratingIncrease();
                         }
                     });
 //                   Intent i = new Intent(getApplicationContext(), Who_has_scored_more_MidMode.class);
@@ -173,12 +178,7 @@ public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_assists.setTextColor(Color.parseColor("#0FA80A"));
                             player2_assists.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogWhoHasAssistedMoreDecrease();
-                                }
-                            }, 1000);
+                            ratingDecrease();
                         }
                     });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -205,12 +205,7 @@ public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_assists.setTextColor(Color.parseColor("#CA0616"));
                             player2_assists.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogWhoHasAssistedMoreDecrease();
-                                }
-                            }, 1000);
+                            ratingDecrease();
                         }
                     });
                     //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -237,12 +232,7 @@ public class WhoHasAssistedMore extends WhoHasAssistedMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_assists.setTextColor(Color.parseColor("#CA0616"));
                             player2_assists.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    showPopUpDialogWhoHasAssistedMoreIncrease();
-                                }
-                            }, 1000);
+                            ratingIncrease();
                         }
                     });
 
