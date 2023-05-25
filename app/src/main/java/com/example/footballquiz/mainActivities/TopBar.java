@@ -78,7 +78,7 @@ public class TopBar extends Fragment {
                             } else if(getActivity() instanceof WhoHasAssistedMore){
                                 userRating = documentSnapshot.getLong("Who has assisted more rating");
                             } else if (getActivity() instanceof WhoHasScoredMore) {
-                                userRating = documentSnapshot.getLong("Who has assisted more rating");
+                                userRating = documentSnapshot.getLong("Who has scored more rating");
                             }
                             updateTopBar(username, userRating);
                         } else {

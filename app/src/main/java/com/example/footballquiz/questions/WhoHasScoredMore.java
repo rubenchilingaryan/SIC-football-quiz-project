@@ -2,6 +2,9 @@ package com.example.footballquiz.questions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,14 +22,16 @@ import android.widget.TextView;
 import com.example.footballquiz.mainActivities.MainMenu;
 import com.example.footballquiz.MethodsActivity;
 import com.example.footballquiz.R;
+import com.example.footballquiz.mainActivities.TopBar;
+import com.example.footballquiz.questionsMethods.WhoHasScoredMoreMethods;
 
 import java.util.Random;
 
-public class WhoHasScoredMore extends MethodsActivity {
+public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
 
     ImageView image1,image2,black_screen1,black_screen2;
     TextView player1_name,player2_name,player1_goals,player2_goals;
-    AppCompatButton back;
+
 
     int[] images = new int[]{R.drawable.adama_traore,R.drawable.antonio_rudiger,R.drawable.casemiro,
             R.drawable.cristiano_ronaldo,R.drawable.darwin_nunez,R.drawable.erling_haaland,
@@ -57,10 +62,14 @@ public class WhoHasScoredMore extends MethodsActivity {
         player2_name = findViewById(R.id.player2_name_scored_more);
         player1_goals = findViewById(R.id.player1_goals);
         player2_goals = findViewById(R.id.player2_goals);
-        back = findViewById(R.id.button_back_scored_more);
 
-/*        scoredMore(image1,image2,black_screen1,black_screen2,player1_name,player2_name,player1_goals,
-                player2_goals,images,player_names,goals,back); */
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment topBarFragment = new TopBar();
+        fragmentTransaction.add(R.id.top_bar_layout, topBarFragment);
+        fragmentTransaction.commit();
+
 
         Random rand = new Random();
         int indexPic1 = rand.nextInt(images.length);
@@ -133,7 +142,6 @@ public class WhoHasScoredMore extends MethodsActivity {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_goals.setVisibility(View.VISIBLE);
                     //                   player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                     player2_goals.setVisibility(View.VISIBLE);
@@ -147,14 +155,7 @@ public class WhoHasScoredMore extends MethodsActivity {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                             player2_goals.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            },1000);
+                            ratingIncrease();
                         }
                     });
 
@@ -169,7 +170,6 @@ public class WhoHasScoredMore extends MethodsActivity {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_goals.setVisibility(View.VISIBLE);
 //                    player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                     player2_goals.setVisibility(View.VISIBLE);
@@ -183,14 +183,7 @@ public class WhoHasScoredMore extends MethodsActivity {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                             player2_goals.setTextColor(Color.parseColor("#CA0616"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            },1000);
+                            ratingIncrease();
                         }
                     });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -204,7 +197,6 @@ public class WhoHasScoredMore extends MethodsActivity {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_goals.setVisibility(View.VISIBLE);
                     //                   player1_goals.setTextColor(Color.parseColor("#CA0616"));
                     player2_goals.setVisibility(View.VISIBLE);
@@ -218,14 +210,7 @@ public class WhoHasScoredMore extends MethodsActivity {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#CA0616"));
                             player2_goals.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            },1000);
+                            ratingDecrease();
                         }
                     });
                     //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -239,7 +224,6 @@ public class WhoHasScoredMore extends MethodsActivity {
                 public void onClick(View v) {
                     image1.setClickable(false);
                     image2.setClickable(false);
-                    back.setClickable(false);
                     player1_goals.setVisibility(View.VISIBLE);
                     //                   player1_goals.setTextColor(Color.parseColor("#CA0616"));
                     player2_goals.setVisibility(View.VISIBLE);
@@ -253,28 +237,13 @@ public class WhoHasScoredMore extends MethodsActivity {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#CA0616"));
                             player2_goals.setTextColor(Color.parseColor("#0FA80A"));
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent i = new Intent(getApplicationContext(), WhoHasScoredMore.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            },1000);
+                            ratingIncrease();
                         }
                     });
 
 //                   Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
 //                   startActivity(i);
 //                   finish();
-                }
-            });
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), MainMenu.class);
-                    startActivity(i);
-                    finish();
                 }
             });
         }
