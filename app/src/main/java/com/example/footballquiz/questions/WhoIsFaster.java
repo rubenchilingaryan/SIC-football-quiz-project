@@ -131,6 +131,10 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    image1.setClickable(false);
+                    image1_black.setClickable(false);
+                    image2.setClickable(false);
+                    image2_black.setClickable(false);
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -160,63 +164,22 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         }
                     });
-
-                    image2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            player1_speed.setVisibility(View.VISIBLE);
-                            player1_speed.setTextColor(Color.parseColor("#0FA80A"));
-                            player2_speed.setVisibility(View.VISIBLE);
-                            player2_speed.setTextColor(Color.parseColor("#CA0616"));
-                            image1_black.setVisibility(View.VISIBLE);
-                            image2_black.setVisibility(View.VISIBLE);
-
-                            // Start the animation for player1_speed
-                            animator1.start();
-
-                            // Start the animation for player2_speed
-                            animator2.start();
-
-                            // Execute ratingDecrease() after the animation duration
-                            animator1.addListener(new Animator.AnimatorListener() {
-                                @Override
-                                public void onAnimationStart(Animator animation) {
-                                }
-
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    // Execute ratingIncrease() after the animation duration
-                                    ratingDecrease();
-                                }
-
-                                @Override
-                                public void onAnimationCancel(@NonNull Animator animation) {
-
-                                }
-
-                                @Override
-                                public void onAnimationRepeat(@NonNull Animator animation) {
-
-                                }
-                            });
-
-                            // ...
-                        }
-                    });
                 }
             });
 
-            // ...
-        } else if (speeds[indexPic1] < speeds[indexPic2]) {
-            image1.setOnClickListener(new View.OnClickListener() {
+            image2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     player1_speed.setVisibility(View.VISIBLE);
-                    player1_speed.setTextColor(Color.parseColor("#CA0616"));
+                    player1_speed.setTextColor(Color.parseColor("#0FA80A"));
                     player2_speed.setVisibility(View.VISIBLE);
-                    player2_speed.setTextColor(Color.parseColor("#0FA80A"));
+                    player2_speed.setTextColor(Color.parseColor("#CA0616"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    image1.setClickable(false);
+                    image1_black.setClickable(false);
+                    image2.setClickable(false);
+                    image2_black.setClickable(false);
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -246,8 +209,53 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         }
                     });
+                }
+            });
 
-                    // ...
+            // ...
+        } else if (speeds[indexPic1] < speeds[indexPic2]) {
+            image1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    player1_speed.setVisibility(View.VISIBLE);
+                    player1_speed.setTextColor(Color.parseColor("#CA0616"));
+                    player2_speed.setVisibility(View.VISIBLE);
+                    player2_speed.setTextColor(Color.parseColor("#0FA80A"));
+                    image1_black.setVisibility(View.VISIBLE);
+                    image2_black.setVisibility(View.VISIBLE);
+                    image1.setClickable(false);
+                    image1_black.setClickable(false);
+                    image2.setClickable(false);
+                    image2_black.setClickable(false);
+
+                    // Start the animation for player1_speed
+                    animator1.start();
+
+                    // Start the animation for player2_speed
+                    animator2.start();
+
+                    // Execute ratingDecrease() after the animation duration
+                    animator1.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            // Execute ratingIncrease() after the animation duration
+                            ratingDecrease();
+                        }
+
+                        @Override
+                        public void onAnimationCancel(@NonNull Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(@NonNull Animator animation) {
+
+                        }
+                    });
                 }
             });
 
@@ -260,6 +268,10 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     player2_speed.setTextColor(Color.parseColor("#0FA80A"));
                     image1_black.setVisibility(View.VISIBLE);
                     image2_black.setVisibility(View.VISIBLE);
+                    image1.setClickable(false);
+                    image1_black.setClickable(false);
+                    image2.setClickable(false);
+                    image2_black.setClickable(false);
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -289,8 +301,6 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         }
                     });
-
-                    // ...
                 }
             });
 
