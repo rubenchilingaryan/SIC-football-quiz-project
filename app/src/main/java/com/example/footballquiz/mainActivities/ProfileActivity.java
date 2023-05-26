@@ -177,7 +177,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if(rightAnswersWhoHasAssistedMoreFireStore == 0 && wrongAnswersWhoHasAssistedMoreFireStore == 0){
                     accuracyWhoHasAssistedMoreFireStore = 0;
                 }else{
-                    accuracyWhoHasAssistedMoreFireStore = (rightAnswersWhoHasScoredMoreFireStore * 100)/allAnswersWhoHasScoredMore;
+                    accuracyWhoHasAssistedMoreFireStore = (rightAnswersWhoHasAssistedMoreFireStore * 100)/allAnswersWhoHasAssistedMore;
                 }
                 accuracyWhoHasAssistedMore.setText(Integer.toString(accuracyWhoHasAssistedMoreFireStore) + "%");
                 selectColor(accuracyWhoHasAssistedMore,accuracyWhoHasAssistedMoreFireStore);
