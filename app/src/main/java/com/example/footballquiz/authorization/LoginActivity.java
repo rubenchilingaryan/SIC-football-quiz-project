@@ -201,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void sendUserToStartActivity() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
+        if (currentUser != null && currentUser.isEmailVerified()) {
             Intent intent = new Intent(getApplicationContext(), StartActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

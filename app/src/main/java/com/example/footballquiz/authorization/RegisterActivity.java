@@ -91,12 +91,27 @@ public class RegisterActivity extends AppCompatActivity {
             user.put("Email", email);
             user.put("Password", password);
             user.put("Username", username);
+
             user.put("Who is faster rating",1000);
             user.put("Who is more expensive rating",1000);
             user.put("Guess the price rating", 1000);
             user.put("Guess the player rating", 1000);
             user.put("Who has scored more rating", 1000);
             user.put("Who has assisted more rating", 1000);
+
+            user.put("Who is faster right answers",0);
+            user.put("Who is more expensive right answers",0);
+            user.put("Guess the price right answers",0);
+            user.put("Guess the player right answers",0);
+            user.put("Who has scored more right answers",0);
+            user.put("Who has assisted more right answers",0);
+
+            user.put("Who is faster wrong answers",0);
+            user.put("Who is more expensive wrong answers",0);
+            user.put("Guess the price wrong answers",0);
+            user.put("Guess the player wrong answers",0);
+            user.put("Who has scored more wrong answers",0);
+            user.put("Who has assisted more wrong answers",0);
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             String userId = mAuth.getCurrentUser().getUid();
@@ -155,6 +170,20 @@ public class RegisterActivity extends AppCompatActivity {
                         userData.put("Guess the player rating", 1000);
                         userData.put("Who has scored more rating", 1000);
                         userData.put("Who has assisted more rating", 1000);
+
+                        userData.put("Who is faster right answers",0);
+                        userData.put("Who is more expensive right answers",0);
+                        userData.put("Guess the price right answers",0);
+                        userData.put("Guess the player right answers",0);
+                        userData.put("Who has scored more right answers",0);
+                        userData.put("Who has assisted more right answers",0);
+
+                        userData.put("Who is faster wrong answers",0);
+                        userData.put("Who is more expensive wrong answers",0);
+                        userData.put("Guess the price wrong answers",0);
+                        userData.put("Guess the player wrong answers",0);
+                        userData.put("Who has scored more wrong answers",0);
+                        userData.put("Who has assisted more wrong answers",0);
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

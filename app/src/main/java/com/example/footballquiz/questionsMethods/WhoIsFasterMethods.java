@@ -261,15 +261,20 @@ public class WhoIsFasterMethods extends AppCompatActivity {
                             // Perform operations on the current score
                             int newScore = currentScore + (15 + rand.nextInt(6));
 
+                            int rightAnswers = documentSnapshot.getLong("Who is faster right answers").intValue();
+                            int newRightAnswers = rightAnswers + 1;
 
+
+                            documentRef.update("Who is faster right answers",newRightAnswers);
                             // Update the field with the new value
                             documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
+                                                    startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
+                                                    finish();
 
-                                            startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
-                                            finish();
+
 
                                         }
                                     })
@@ -315,15 +320,18 @@ public class WhoIsFasterMethods extends AppCompatActivity {
                             // Perform operations on the current score
                             int newScore = currentScore - (25 + rand.nextInt(6));
 
+                            int wrongAnswers = documentSnapshot.getLong("Who is faster wrong answers").intValue();
+                            int newWrongAnswers = wrongAnswers + 1;
 
+                            documentRef.update("Who is faster wrong answers",newWrongAnswers);
                             // Update the field with the new value
                             documentRef.update("Who is faster rating", newScore)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
+                                                    startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
+                                                    finish();
 
-                                            startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
-                                            finish();
 
                                         }
                                     })
