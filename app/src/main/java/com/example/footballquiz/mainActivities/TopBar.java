@@ -1,5 +1,6 @@
 package com.example.footballquiz.mainActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.footballquiz.R;
@@ -26,6 +28,7 @@ public class TopBar extends Fragment {
 
     TextView userName, rating;
     Button back;
+    ImageView profilePicture;
 
     public TopBar() {
         // Required empty public constructor
@@ -39,6 +42,14 @@ public class TopBar extends Fragment {
         userName = view.findViewById(R.id.username_text);
         rating = view.findViewById(R.id.rating_text);
         back = view.findViewById(R.id.button_back);
+        profilePicture = view.findViewById(R.id.profile_picture);
+
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ProfileActivity.class));
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
