@@ -25,4 +25,13 @@
     <color name="activities_background">#40424E</color>
     <color name="other_yellow">#B5AE39</color>
     <color name="tab_layout">#40484D</color>
+    <color name="accuracy_0_20">#930000</color>
+    <color name="accuracy_20_30">#E10A0A</color>
+    <color name="accuracy_31_45">#E16E0A</color>
+    <color name="accuracy_46_55">#E1A40A</color>
+    <color name="accuracy_56_65">#D3E10A</color>
+    <color name="accuracy_66_75">#7DE10A</color>
+    <color name="accuracy_76_85">#55E10A</color>
+    <color name="accuracy_86_95">#0AE159</color>
+    <color name="accuracy_96_100">#0AE1AF</color>
 </resources>
