@@ -3,6 +3,7 @@ package com.example.footballquiz.mainActivities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -103,6 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyWhoIsFasterFireStore = (rightAnswersWhoIsFasterFireStore * 100)/allAnswersWhoIsFaster;
                 }
                 accuracyWhoIsFaster.setText(Integer.toString(accuracyWhoIsFasterFireStore) + "%");
+                selectColor(accuracyWhoIsFaster,accuracyWhoIsFasterFireStore);
 
                 // Who is more expensive
                 int rightAnswersWhoIsMoreExpensiveFireStore = documentSnapshot.getLong("Who is more expensive right answers").intValue();
@@ -117,6 +119,8 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyWhoIsMoreExpensiveFireStore = (rightAnswersWhoIsMoreExpensiveFireStore * 100) / allAnswersWhoIsMoreExpensive;
                 }
                 accuracyWhoIsMoreExpensive.setText(Integer.toString(accuracyWhoIsMoreExpensiveFireStore) + "%");
+                selectColor(accuracyWhoIsMoreExpensive,accuracyWhoIsMoreExpensiveFireStore);
+
 
                 // Guess the price
                 int rightAnswersGuessThePriceFireStore = documentSnapshot.getLong("Guess the price right answers").intValue();
@@ -131,6 +135,7 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyGuessThePriceFireStore  = (rightAnswersGuessThePriceFireStore * 100)/allAnswersGuessThePrice;
                 }
                 accuracyGuessThePrice.setText(Integer.toString(accuracyGuessThePriceFireStore) + "%");
+                selectColor(accuracyGuessThePrice,accuracyGuessThePriceFireStore);
 
                 // Guess the player
                 int rightAnswersGuessThePlayerFireStore = documentSnapshot.getLong("Guess the player right answers").intValue();
@@ -145,6 +150,7 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyGuessThePlayerFireStore = (rightAnswersGuessThePlayerFireStore * 100)/allAnswersGuessThePlayer;
                 }
                 accuracyGuessThePlayer.setText(Integer.toString(accuracyGuessThePlayerFireStore) + "%");
+                selectColor(accuracyGuessThePlayer,accuracyGuessThePlayerFireStore);
 
                 // Who has scored more
                 int rightAnswersWhoHasScoredMoreFireStore = documentSnapshot.getLong("Who has scored more right answers").intValue();
@@ -159,6 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyWhoHasScoredMoreFireStore = (rightAnswersWhoHasScoredMoreFireStore * 100)/allAnswersWhoHasScoredMore;
                 }
                 accuracyWhoHasScoredMore.setText(Integer.toString(accuracyWhoHasScoredMoreFireStore) + "%");
+                selectColor(accuracyWhoHasScoredMore,accuracyWhoHasScoredMoreFireStore);
 
                 // Who has assisted more
                 int rightAnswersWhoHasAssistedMoreFireStore = documentSnapshot.getLong("Who has assisted more right answers").intValue();
@@ -173,6 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
                     accuracyWhoHasAssistedMoreFireStore = (rightAnswersWhoHasScoredMoreFireStore * 100)/allAnswersWhoHasScoredMore;
                 }
                 accuracyWhoHasAssistedMore.setText(Integer.toString(accuracyWhoHasAssistedMoreFireStore) + "%");
+                selectColor(accuracyWhoHasAssistedMore,accuracyWhoHasAssistedMoreFireStore);
             }
 
 
@@ -180,5 +188,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+    }
+    private void selectColor(TextView accuracyTextView,int accuracyFireStore){
+        if(accuracyFireStore >= 0 && accuracyFireStore <= 20){
+            accuracyTextView.setTextColor(Color.parseColor("#930000"));
+        }else if(accuracyFireStore >= 21 && accuracyFireStore<= 30){
+            accuracyTextView.setTextColor(Color.parseColor("#E10A0A"));
+        }else if(accuracyFireStore >= 31 && accuracyFireStore<= 45){
+            accuracyTextView.setTextColor(Color.parseColor("#E16E0A"));
+        }else if(accuracyFireStore >= 46 && accuracyFireStore<= 55){
+            accuracyTextView.setTextColor(Color.parseColor("#E1A40A"));
+        }else if(accuracyFireStore >= 56 && accuracyFireStore<= 65){
+            accuracyTextView.setTextColor(Color.parseColor("#D3E10A"));
+        }else if(accuracyFireStore >= 66 && accuracyFireStore<= 75){
+            accuracyTextView.setTextColor(Color.parseColor("#7DE10A"));
+        }else if(accuracyFireStore >= 76 && accuracyFireStore<= 85){
+            accuracyTextView.setTextColor(Color.parseColor("#55E10A"));
+        }else if(accuracyFireStore >= 86 && accuracyFireStore<= 92){
+            accuracyTextView.setTextColor(Color.parseColor("#0AE159"));
+        }else if(accuracyFireStore >= 93 && accuracyFireStore<= 100){
+            accuracyTextView.setTextColor(Color.parseColor("#0AE1AF"));
+        }
     }
 }

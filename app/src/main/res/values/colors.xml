@@ -32,6 +32,6 @@
     <color name="accuracy_56_65">#D3E10A</color>
     <color name="accuracy_66_75">#7DE10A</color>
     <color name="accuracy_76_85">#55E10A</color>
-    <color name="accuracy_86_95">#0AE159</color>
-    <color name="accuracy_96_100">#0AE1AF</color>
+    <color name="accuracy_86_92">#0AE159</color>
+    <color name="accuracy_93_100">#0AE1AF</color>
 </resources>
