@@ -257,6 +257,12 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                             // Perform operations on the current score
                             int newScore = currentScore + (15 + rand.nextInt(6));
 
+                            int rightAnswers = documentSnapshot.getLong("Who is more expensive right answers").intValue();
+                            int newRightAnswers = rightAnswers + 1;
+
+
+                            documentRef.update("Who is more expensive right answers",newRightAnswers);
+
 
                             // Update the field with the new value
                             documentRef.update("Who is more expensive rating", newScore)
@@ -310,6 +316,11 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                             Random rand = new Random();
                             // Perform operations on the current score
                             int newScore = currentScore - (25 + rand.nextInt(6));
+                            int wrongAnswers = documentSnapshot.getLong("Who is more expensive wrong answers").intValue();
+                            int newWrongAnswers = wrongAnswers + 1;
+
+
+                            documentRef.update("Who is more expensive wrong answers",newWrongAnswers);
 
 
                             // Update the field with the new value
