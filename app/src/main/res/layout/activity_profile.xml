@@ -8,87 +8,651 @@
     tools:context=".mainActivities.ProfileActivity">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline35_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.35" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline55_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.55" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline65"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.65" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
 
-    <ImageView
-        android:id="@+id/profilePic"
-        android:layout_width="0dp"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline15_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline85_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.07" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.22" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.65" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.35" />
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/circle_background"
+                android:src="@drawable/ic_person"
+                app:layout_constraintBottom_toTopOf="@+id/guideline22"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline65"
+                app:layout_constraintStart_toStartOf="@+id/guideline35"
+                app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+            <TextView
+                android:id="@+id/username_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline65"
+                app:layout_constraintStart_toStartOf="@+id/guideline35"
+                app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+            <TextView
+                android:id="@+id/email_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Email"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/guideline65"
+                app:layout_constraintStart_toStartOf="@+id/guideline35"
+                app:layout_constraintTop_toBottomOf="@+id/username_profile" />
+
+            <ImageView
+                android:id="@+id/BtnSignOut"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logout" />
+
+            <ImageView
+                android:id="@+id/backButtonProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/arrow_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        android:background="@drawable/circle_background"
-        app:layout_constraintBottom_toTopOf="@+id/guideline22"
-        app:layout_constraintEnd_toStartOf="@+id/guideline65"
-        app:layout_constraintStart_toStartOf="@+id/guideline35"
-        app:layout_constraintTop_toTopOf="@+id/guideline7"
-        android:src="@drawable/ic_person"
-         />
-
-    <TextView
-        android:id="@+id/username_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline65"
-        app:layout_constraintStart_toStartOf="@+id/guideline35"
-        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
-
-    <TextView
-        android:id="@+id/email_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5sp"
-        android:text="Email"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/guideline65"
-        app:layout_constraintStart_toStartOf="@+id/guideline35"
-        app:layout_constraintTop_toBottomOf="@+id/username_profile" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_marginTop="10dp"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logout" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline35_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/guideline55_horizontal">
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="30dp">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Who is faster"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyWhoIsFaster"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersWhoIsFaster"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersWhoIsFaster"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Who is more expensive"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyWhoIsMoreExpensive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersWhoIsMoreExpensive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersWhoIsMoreExpensive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Guess the price"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyGuessThePrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersGuessThePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersGuessThePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Guess the player"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyGuessThePlayer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersGuessThePlayer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersGuessThePlayer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Who has scored more"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyWhoHasScoredMore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersWhoHasScoredMore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersWhoHasScoredMore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginEnd="30dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Who has assisted more"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/accuracyWhoHasAssistedMore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="14%"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo_2_extrabold"
+                        android:text="Accuracy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rightAnswersWhoHasAssistedMore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="14"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="right answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/wrongAnswersWhoHasAssistedMore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="70"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="35sp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo_2_extrabold"
+                            android:text="wrong answers"
+                            android:textAlignment="center"
+                            android:textColor="@color/wrong_red"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
