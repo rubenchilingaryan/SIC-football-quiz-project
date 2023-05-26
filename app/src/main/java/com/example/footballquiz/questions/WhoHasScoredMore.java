@@ -183,7 +183,7 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                             player2_goals.setTextColor(Color.parseColor("#CA0616"));
-                            ratingIncrease();
+                            ratingDecrease();
                         }
                     });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
