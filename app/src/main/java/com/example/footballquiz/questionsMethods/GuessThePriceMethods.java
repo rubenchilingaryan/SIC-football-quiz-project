@@ -265,6 +265,7 @@ public class GuessThePriceMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), GuessThePrice.class));
+                                            finish();
 
                                         }
                                     })
@@ -318,6 +319,7 @@ public class GuessThePriceMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), GuessThePrice.class));
+                                            finish();
 
                                         }
                                     })

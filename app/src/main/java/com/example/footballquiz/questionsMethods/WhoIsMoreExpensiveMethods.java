@@ -265,6 +265,7 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoIsMoreExpensive.class));
+                                            finish();
 
                                         }
                                     })
@@ -318,6 +319,7 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoIsMoreExpensive.class));
+                                            finish();
 
                                         }
                                     })

@@ -45,6 +45,7 @@ public class WhoHasScoredMoreMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoHasScoredMore.class));
+                                            finish();
 
                                         }
                                     })
@@ -98,6 +99,7 @@ public class WhoHasScoredMoreMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoHasScoredMore.class));
+                                            finish();
 
                                         }
                                     })

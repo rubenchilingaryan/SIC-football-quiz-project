@@ -264,6 +264,7 @@ public class WhoHasAssistedMoreMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoHasAssistedMore.class));
+                                            finish();
 
                                         }
                                     })
@@ -317,6 +318,7 @@ public class WhoHasAssistedMoreMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), WhoHasAssistedMore.class));
+                                            finish();
 
                                         }
                                     })

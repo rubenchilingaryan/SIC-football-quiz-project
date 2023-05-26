@@ -45,6 +45,7 @@ public class GuessThePlayerMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), GuessThePlayer.class));
+                                            finish();
 
                                         }
                                     })
@@ -98,6 +99,7 @@ public class GuessThePlayerMethods extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
 
                                             startActivity(new Intent(getApplicationContext(), GuessThePlayer.class));
+                                            finish();
 
                                         }
                                     })
