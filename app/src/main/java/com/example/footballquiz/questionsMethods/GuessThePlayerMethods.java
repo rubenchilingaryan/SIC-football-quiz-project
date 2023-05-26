@@ -36,6 +36,11 @@ public class GuessThePlayerMethods extends AppCompatActivity {
                             Random rand = new Random();
                             // Perform operations on the current score
                             int newScore = currentScore + (15 + rand.nextInt(6));
+                            int rightAnswers = documentSnapshot.getLong("Guess the player right answers").intValue();
+                            int newRightAnswers = rightAnswers + 1;
+
+
+                            documentRef.update("Guess the player right answers",newRightAnswers);
 
 
                             // Update the field with the new value
@@ -90,6 +95,11 @@ public class GuessThePlayerMethods extends AppCompatActivity {
                             Random rand = new Random();
                             // Perform operations on the current score
                             int newScore = currentScore - (35 + rand.nextInt(6));
+                            int wrongAnswers = documentSnapshot.getLong("Guess the player wrong answers").intValue();
+                            int newWrongAnswers = wrongAnswers + 1;
+
+
+                            documentRef.update("Guess the player wrong answers",newWrongAnswers);
 
 
                             // Update the field with the new value
