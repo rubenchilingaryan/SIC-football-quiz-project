@@ -1,23 +1,41 @@
 package com.example.footballquiz.mainActivities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.authorization.LoginActivity;
+import com.github.drjacky.imagepicker.ImagePicker;
+import com.github.drjacky.imagepicker.constant.ImageProvider;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.jetbrains.annotations.NotNull;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+
+
 public class ProfileActivity extends AppCompatActivity {
+
+    ImageView profilePic;
+
+    private static final int REQUEST_CODE_IMAGE_PICKER = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +76,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         ImageView back = findViewById(R.id.backButtonProfile);
         ImageView signOut = findViewById(R.id.btnSignOut);
+        ImageView addProfilePic = findViewById(R.id.addProfilePicButton);
+        profilePic = findViewById(R.id.profilePic);
 
         // Firebase
 
@@ -80,6 +100,20 @@ public class ProfileActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
+            }
+        });
+
+        addProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.Companion.with(ProfileActivity.this)
+                        .galleryOnly()
+                        .crop(1f,1f)
+                        .cropOval()
+                        .compress(1024)
+                        .maxResultSize(1080,1080)
+                        .start();
+
             }
         });
 
@@ -188,6 +222,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+
+
     }
     private void selectColor(TextView accuracyTextView,int accuracyFireStore){
         if(accuracyFireStore >= 0 && accuracyFireStore <= 20){
@@ -208,6 +244,16 @@ public class ProfileActivity extends AppCompatActivity {
             accuracyTextView.setTextColor(Color.parseColor("#0AE159"));
         }else if(accuracyFireStore >= 93 && accuracyFireStore<= 100){
             accuracyTextView.setTextColor(Color.parseColor("#0AE1AF"));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ImagePicker.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+            profilePic.setImageURI(imageUri);
         }
     }
 }

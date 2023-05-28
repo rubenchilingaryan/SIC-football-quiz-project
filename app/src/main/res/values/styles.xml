@@ -68,4 +68,8 @@
         <item name="textAllCaps">true</item>
     </style>
 
+    <style name="circular">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

@@ -31,7 +31,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.room:room-runtime:2.4.0'
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-database:20.2.1'
@@ -41,8 +40,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:24.6.0'
     annotationProcessor 'androidx.room:room-compiler:2.4.0'
 
+    implementation('com.github.Drjacky:ImagePicker:1.8.4') {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-ktx'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+    }
 
 
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -53,3 +58,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'androidx.multidex:multidex:2.0.1'
 }
+

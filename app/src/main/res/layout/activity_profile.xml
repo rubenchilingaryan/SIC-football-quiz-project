@@ -20,7 +20,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.55" />
+                app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline60_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline90_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
 
 
@@ -66,17 +80,33 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.35" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profilePic"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/circle_background"
                 android:src="@drawable/ic_person"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/guideline22"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline65"
                 app:layout_constraintStart_toStartOf="@+id/guideline35"
-                app:layout_constraintTop_toTopOf="@+id/guideline7" />
+                app:layout_constraintTop_toTopOf="@+id/guideline7"
+                app:shapeAppearanceOverlay="@style/circular"
+                />
+
+
+            <ImageView
+                android:id="@+id/addProfilePicButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/add_button"
+                app:layout_constraintEnd_toEndOf="@id/profilePic"
+                app:layout_constraintBottom_toBottomOf="@id/profilePic"
+                android:src="@drawable/ic_add"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <TextView
                 android:id="@+id/username_profile"
