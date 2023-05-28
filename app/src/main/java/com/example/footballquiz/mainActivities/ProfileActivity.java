@@ -7,33 +7,32 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import android.widget.Toast;
+
 
 import com.example.footballquiz.R;
 import com.example.footballquiz.authorization.LoginActivity;
 import com.github.drjacky.imagepicker.ImagePicker;
-import com.github.drjacky.imagepicker.constant.ImageProvider;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.UploadTask;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
-import org.jetbrains.annotations.NotNull;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
 
 
 public class ProfileActivity extends AppCompatActivity {
 
     ImageView profilePic;
+    ImageView addProfilePic;
 
     private static final int REQUEST_CODE_IMAGE_PICKER = 1001;
 
@@ -76,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         ImageView back = findViewById(R.id.backButtonProfile);
         ImageView signOut = findViewById(R.id.btnSignOut);
-        ImageView addProfilePic = findViewById(R.id.addProfilePicButton);
+        addProfilePic = findViewById(R.id.addProfilePicButton);
         profilePic = findViewById(R.id.profilePic);
 
         // Firebase
@@ -84,6 +83,23 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
+
+
+
+        documentRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                String imageUrl = documentSnapshot.getString("profileImageUrl");
+                addProfilePic.setVisibility(View.GONE);
+                Glide.with(this)
+                        .load(imageUrl)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(profilePic);
+            } else {
+                // The user document doesn't exist or doesn't have a profile picture URL
+            }
+        }).addOnFailureListener(e -> {
+            // Error retrieving user document
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +130,19 @@ public class ProfileActivity extends AppCompatActivity {
                         .maxResultSize(1080,1080)
                         .start();
 
+            }
+        });
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.Companion.with(ProfileActivity.this)
+                        .galleryOnly()
+                        .crop(1f,1f)
+                        .cropOval()
+                        .compress(1024)
+                        .maxResultSize(1080,1080)
+                        .start();
             }
         });
 
@@ -253,7 +282,64 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (requestCode == ImagePicker.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
-            profilePic.setImageURI(imageUri);
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            // Create a Firebase Storage reference with a unique filename
+            String fileName = "profile_image_" + userId + ".jpg";
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("profile_images").child(fileName);
+
+            // Upload the image to Firebase Storage
+            UploadTask uploadTask = storageRef.putFile(imageUri);
+            uploadTask.addOnSuccessListener(taskSnapshot -> {
+                // Image upload successful
+
+                // Get the download URL of the uploaded image
+                storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    String imageUrl = uri.toString();
+
+                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                    DocumentReference documentRef = firestore.collection("users").document(userId);
+
+                    documentRef.update("profileImageUrl", imageUrl)
+                            .addOnSuccessListener(aVoid -> {
+                                // Document updated successfully
+                                Toast.makeText(ProfileActivity.this, "Document updated successfully", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                // Error updating document
+                                Toast.makeText(ProfileActivity.this, "Failed to update document", Toast.LENGTH_SHORT).show();
+                            });
+
+
+                    Toast.makeText(ProfileActivity.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(e -> {
+                    // Error getting the download URL
+                    Toast.makeText(ProfileActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                });
+            }).addOnFailureListener(e -> {
+                // Image upload failed
+                Toast.makeText(ProfileActivity.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
+            });
+
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            DocumentReference documentRef = firestore.collection("users").document(userId);
+
+
+
+            documentRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                    String imageUrl = documentSnapshot.getString("profileImageUrl");
+                    addProfilePic.setVisibility(View.GONE);
+                    Glide.with(this)
+                            .load(imageUrl)
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(profilePic);
+                } else {
+                    // The user document doesn't exist or doesn't have a profile picture URL
+                }
+            }).addOnFailureListener(e -> {
+                // Error retrieving user document
+            });
         }
     }
 }
