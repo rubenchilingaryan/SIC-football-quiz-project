@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/top_bar_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,14 +14,16 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_picture"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="3dp"
         android:src="@drawable/user_icon"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/button_back"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="16dp"
+        app:shapeAppearanceOverlay="@style/circular"/>
 
     <TextView
         android:id="@+id/username_text"

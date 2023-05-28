@@ -21,8 +21,11 @@ import com.example.footballquiz.questions.WhoIsMoreExpensive;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class TopBar extends Fragment {
 
@@ -56,6 +59,24 @@ public class TopBar extends Fragment {
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), ProfileActivity.class));
             }
+        });
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
+
+        documentRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                String imageUrl = documentSnapshot.getString("profileImageUrl");
+                Glide.with(this)
+                        .load(imageUrl)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(profilePicture);
+            } else {
+                // The user document doesn't exist or doesn't have a profile picture URL
+            }
+        }).addOnFailureListener(e -> {
+            // Error retrieving user document
         });
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +120,7 @@ public class TopBar extends Fragment {
                                 userRating = documentSnapshot.getLong("Who has scored more rating");
                             }
                             updateTopBar(username, userRating);
+
                         } else {
                             Toast.makeText(getActivity(), "User data not found", Toast.LENGTH_SHORT).show();
                         }

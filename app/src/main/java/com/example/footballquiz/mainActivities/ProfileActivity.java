@@ -304,6 +304,22 @@ public class ProfileActivity extends AppCompatActivity {
                             .addOnSuccessListener(aVoid -> {
                                 // Document updated successfully
                                 Toast.makeText(ProfileActivity.this, "Document updated successfully", Toast.LENGTH_SHORT).show();
+
+
+
+                                documentRef.get().addOnSuccessListener(documentSnapshot -> {
+                                    if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                                        addProfilePic.setVisibility(View.GONE);
+                                        Glide.with(this)
+                                                .load(imageUrl)
+                                                .apply(RequestOptions.circleCropTransform())
+                                                .into(profilePic);
+                                    } else {
+                                        // The user document doesn't exist or doesn't have a profile picture URL
+                                    }
+                                }).addOnFailureListener(e -> {
+                                    // Error retrieving user document
+                                });
                             })
                             .addOnFailureListener(e -> {
                                 // Error updating document
@@ -321,25 +337,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
             });
 
-            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-            DocumentReference documentRef = firestore.collection("users").document(userId);
 
-
-
-            documentRef.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
-                    String imageUrl = documentSnapshot.getString("profileImageUrl");
-                    addProfilePic.setVisibility(View.GONE);
-                    Glide.with(this)
-                            .load(imageUrl)
-                            .apply(RequestOptions.circleCropTransform())
-                            .into(profilePic);
-                } else {
-                    // The user document doesn't exist or doesn't have a profile picture URL
-                }
-            }).addOnFailureListener(e -> {
-                // Error retrieving user document
-            });
         }
     }
 }
