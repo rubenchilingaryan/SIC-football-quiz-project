@@ -97,9 +97,16 @@ public class ProfileActivity extends AppCompatActivity {
         // Buttons
 
         ImageView back = findViewById(R.id.backButtonProfile);
-        ImageView signOut = findViewById(R.id.btnSignOut);
         addProfilePic = findViewById(R.id.addProfilePicButton);
         profilePic = findViewById(R.id.profilePic);
+        TextView settings = findViewById(R.id.settings_button);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            }
+        });
 
         // Firebase
 
@@ -129,15 +136,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), StartActivity.class);
                 startActivity(intent);
-                finish();
-            }
-        });
-
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
             }
         });

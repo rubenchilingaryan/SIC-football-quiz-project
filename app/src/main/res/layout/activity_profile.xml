@@ -22,6 +22,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.65" />
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline60_horizontal"
         android:layout_width="wrap_content"
@@ -128,14 +130,7 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline35"
                 app:layout_constraintTop_toBottomOf="@+id/username_profile" />
 
-            <ImageView
-                android:id="@+id/btnSignOut"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logout" />
+
 
             <ImageView
                 android:id="@+id/backButtonProfile"
@@ -705,5 +700,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline35_horizontal"
         app:layout_constraintBottom_toBottomOf="@id/guideline55_horizontal"/>
+
+    <TextView
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textColor="@color/white"
+        android:fontFamily="@font/exo_2_extrabold"
+        android:drawableTop="@drawable/ic_settings"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/guideline55_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
