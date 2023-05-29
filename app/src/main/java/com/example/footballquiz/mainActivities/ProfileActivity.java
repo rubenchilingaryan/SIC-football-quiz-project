@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,12 +35,34 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView profilePic;
     ImageView addProfilePic;
 
+    ImageView scrollRight,scrollLeft;
+
     private static final int REQUEST_CODE_IMAGE_PICKER = 1001;
+
+    HorizontalScrollView horizontalScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        horizontalScrollView = findViewById(R.id.horizontalScrollView);
+        scrollLeft = findViewById(R.id.scroll_left);
+        scrollRight = findViewById(R.id.scroll_right);
+
+        scrollLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollViewLeft();
+            }
+        });
+
+        scrollRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollViewRight();
+            }
+        });
 
         // Accuracies
         TextView accuracyWhoIsFaster = findViewById(R.id.accuracyWhoIsFaster);
@@ -340,4 +363,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
     }
+
+    private void scrollViewLeft() {
+        horizontalScrollView.smoothScrollBy(-700, 0);
+    }
+
+    private void scrollViewRight() {
+        horizontalScrollView.smoothScrollBy(700, 0);
+    }
+
 }

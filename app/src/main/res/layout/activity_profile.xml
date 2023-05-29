@@ -147,7 +147,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/arrow_back" />
 
+
+
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -156,7 +159,9 @@
         app:layout_constraintTop_toTopOf="@id/guideline35_horizontal"
         app:layout_constraintBottom_toBottomOf="@id/guideline55_horizontal">
 
+
         <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             
@@ -682,5 +687,23 @@
         </HorizontalScrollView>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/scroll_left"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/scroll_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline35_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/guideline55_horizontal"/>
+
+    <ImageView
+        android:id="@+id/scroll_right"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/scroll_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline35_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/guideline55_horizontal"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
