@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.footballquiz.R;
 import com.example.footballquiz.ratings.recyclerView.M_RecyclerViewAdapter;
 import com.example.footballquiz.ratings.recyclerView.ModesModel;
@@ -49,32 +51,48 @@ public class FragmentFasterRatings extends Fragment implements RecyclerViewInter
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    List<DocumentSnapshot> documents = task.getResult().getDocuments();
-                    Random rand = new Random();
-                    int position = 1;
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
 
-                    for (DocumentSnapshot document : documents) {
-                        String username = document.getString("Username");
-                        int rating = document.getLong("Who is faster rating").intValue();
 
-                        modesModels.add(new ModesModel(
-                                Integer.toString(position),
-                                username,
-                                Integer.toString(rating),
-                                R.drawable.user_icon
-                        ));
 
-                        position++;
+        documentRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                String imageUrl = documentSnapshot.getString("profileImageUrl");
+                leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<DocumentSnapshot> documents = task.getResult().getDocuments();
+                            Random rand = new Random();
+                            int position = 1;
+
+                            for (DocumentSnapshot document : documents) {
+                                String username = document.getString("Username");
+                                int rating = document.getLong("Who is faster rating").intValue();
+
+                                modesModels.add(new ModesModel(
+                                        Integer.toString(position),
+                                        username,
+                                        Integer.toString(rating),
+                                        imageUrl != null ? imageUrl : "",
+                                        R.drawable.user_icon
+                                ));
+
+                                position++;
+                            }
+
+                            // Update the RecyclerView adapter with the leaderboard data
+                            adapter.notifyDataSetChanged();
+                        }
                     }
-
-                    // Update the RecyclerView adapter with the leaderboard data
-                    adapter.notifyDataSetChanged();
-                }
+                });
+            } else {
+                // The user document doesn't exist or doesn't have a profile picture URL
             }
+        }).addOnFailureListener(e -> {
+            // Error retrieving user document
         });
 
         return view;

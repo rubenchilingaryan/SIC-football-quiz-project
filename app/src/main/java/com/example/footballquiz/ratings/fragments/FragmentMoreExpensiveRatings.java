@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.footballquiz.R;
 import com.example.footballquiz.ratings.recyclerView.M_RecyclerViewAdapter;
 import com.example.footballquiz.ratings.recyclerView.ModesModel;
 import com.example.footballquiz.ratings.recyclerView.RecyclerViewInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -29,7 +33,6 @@ import java.util.Random;
 public class FragmentMoreExpensiveRatings extends Fragment implements RecyclerViewInterface {
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
-    int ratingBest = 9114;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +40,7 @@ public class FragmentMoreExpensiveRatings extends Fragment implements RecyclerVi
         View view = inflater.inflate(R.layout.fragment_more_expensive_ratings, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_more_expensive);
 
-        M_RecyclerViewAdapter adapter = new M_RecyclerViewAdapter(getContext(), modesModels, this);
+        M_RecyclerViewAdapter adapter = new M_RecyclerViewAdapter(getActivity(), modesModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -46,33 +49,50 @@ public class FragmentMoreExpensiveRatings extends Fragment implements RecyclerVi
                 .orderBy("Who is more expensive rating", Query.Direction.DESCENDING)
                 .limit(100);
 
-        leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    List<DocumentSnapshot> documents = task.getResult().getDocuments();
-                    Random rand = new Random();
-                    int position = 1;
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentRef = firestore.collection("users").document(userId);
 
-                    for (DocumentSnapshot document : documents) {
-                        String username = document.getString("Username");
-                        int rating = document.getLong("Who is more expensive rating").intValue();
 
-                        modesModels.add(new ModesModel(
-                                Integer.toString(position),
-                                username,
-                                Integer.toString(rating),
-                                R.drawable.user_icon
-                        ));
 
-                        position++;
+        documentRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
+                String imageUrl = documentSnapshot.getString("profileImageUrl");
+                leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<DocumentSnapshot> documents = task.getResult().getDocuments();
+                            Random rand = new Random();
+                            int position = 1;
+
+                            for (DocumentSnapshot document : documents) {
+                                String username = document.getString("Username");
+                                int rating = document.getLong("Who is more expensive rating").intValue();
+
+                                modesModels.add(new ModesModel(
+                                        Integer.toString(position),
+                                        username,
+                                        Integer.toString(rating),
+                                        imageUrl != null ? imageUrl : "",
+                                        R.drawable.user_icon
+                                ));
+
+                                position++;
+                            }
+
+                            // Update the RecyclerView adapter with the leaderboard data
+                            adapter.notifyDataSetChanged();
+                        }
                     }
-
-                    // Update the RecyclerView adapter with the leaderboard data
-                    adapter.notifyDataSetChanged();
-                }
+                });
+            } else {
+                // The user document doesn't exist or doesn't have a profile picture URL
             }
+        }).addOnFailureListener(e -> {
+            // Error retrieving user document
         });
+
 
         return view;
     }

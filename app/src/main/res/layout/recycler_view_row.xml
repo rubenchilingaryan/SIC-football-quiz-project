@@ -19,7 +19,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,17 +45,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_margin="8dp"
                     android:padding="5dp"
+                    app:strokeColor="@color/orange"
+                    app:strokeWidth="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="@id/guideline30"
                     app:layout_constraintStart_toEndOf="@id/guideline6"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/user_icon"
-                    app:tint="@color/recyclerView_items" />
+                    app:shapeAppearanceOverlay="@style/circular"
+                    app:srcCompat="@drawable/user_icon" />
 
                 <TextView
                     android:id="@+id/username"

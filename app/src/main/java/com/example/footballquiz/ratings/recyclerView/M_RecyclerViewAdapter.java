@@ -7,22 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.footballquiz.R;
 
 import java.util.ArrayList;
 
 public class M_RecyclerViewAdapter extends RecyclerView.Adapter<M_RecyclerViewAdapter.MyViewHolder> {
     private final RecyclerViewInterface recyclerViewInterface;
+    private static final int PLACEHOLDER_IMAGE = R.drawable.user_icon;
+
 
     Context context;
     ArrayList<ModesModel> modesModels;
 
     public M_RecyclerViewAdapter(Context context, ArrayList<ModesModel> modesModels, RecyclerViewInterface recyclerViewInterface) {
-        this.context = context;
+        this.context = context.getApplicationContext();
         this.modesModels = modesModels;
         this.recyclerViewInterface = recyclerViewInterface;
     }
@@ -37,16 +42,25 @@ public class M_RecyclerViewAdapter extends RecyclerView.Adapter<M_RecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         View rowLayout = holder.itemView;
         rowLayout.setBackgroundColor(Color.TRANSPARENT);
-
 
         holder.number.setText(modesModels.get(position).getNumber());
         holder.username.setText(modesModels.get(position).getUsername());
         holder.rating.setText(modesModels.get(position).getRating());
-        holder.imageView.setImageResource(modesModels.get(position).getImageview());
+
+        String imageUrl = modesModels.get(position).getImageUrl();
+
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(context)
+                    .load(imageUrl)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(modesModels.get(position).getImageview());
+        }
     }
+
 
     @Override
     public int getItemCount() {
