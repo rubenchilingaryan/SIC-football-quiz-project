@@ -135,6 +135,7 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     image1_black.setClickable(false);
                     image2.setClickable(false);
                     image2_black.setClickable(false);
+                    ratingIncrease();
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -150,8 +151,13 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            // Execute ratingIncrease() after the animation duration
-                            ratingIncrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
+
                         }
 
                         @Override
@@ -180,6 +186,7 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     image1_black.setClickable(false);
                     image2.setClickable(false);
                     image2_black.setClickable(false);
+                    ratingDecrease();
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -195,8 +202,12 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            // Execute ratingIncrease() after the animation duration
-                            ratingDecrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
                         }
 
                         @Override
@@ -227,6 +238,7 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     image1_black.setClickable(false);
                     image2.setClickable(false);
                     image2_black.setClickable(false);
+                    ratingDecrease();
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -242,8 +254,12 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            // Execute ratingIncrease() after the animation duration
-                            ratingDecrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
                         }
 
                         @Override
@@ -272,6 +288,7 @@ public class WhoIsFaster extends WhoIsFasterMethods {
                     image1_black.setClickable(false);
                     image2.setClickable(false);
                     image2_black.setClickable(false);
+                    ratingIncrease();
 
                     // Start the animation for player1_speed
                     animator1.start();
@@ -287,8 +304,12 @@ public class WhoIsFaster extends WhoIsFasterMethods {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            // Execute ratingIncrease() after the animation duration
-                            ratingIncrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);;
                         }
 
                         @Override

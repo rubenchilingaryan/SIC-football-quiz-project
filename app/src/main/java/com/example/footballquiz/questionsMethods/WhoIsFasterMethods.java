@@ -271,10 +271,6 @@ public class WhoIsFasterMethods extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                                    startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
-                                                    finish();
-
-
 
                                         }
                                     })
@@ -329,9 +325,6 @@ public class WhoIsFasterMethods extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                                    startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
-                                                    finish();
-
 
                                         }
                                     })
@@ -356,5 +349,10 @@ public class WhoIsFasterMethods extends AppCompatActivity {
                 });
 
 
+    }
+
+    protected void nextActivity(){
+        startActivity(new Intent(getApplicationContext(), WhoIsFaster.class));
+        finish();
     }
 }
