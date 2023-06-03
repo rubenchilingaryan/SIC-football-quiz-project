@@ -268,8 +268,7 @@ public class WhoHasAssistedMoreMethods extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
-                                            startActivity(new Intent(getApplicationContext(), WhoHasAssistedMore.class));
-                                            finish();
+
 
                                         }
                                     })
@@ -327,8 +326,7 @@ public class WhoHasAssistedMoreMethods extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
-                                            startActivity(new Intent(getApplicationContext(), WhoHasAssistedMore.class));
-                                            finish();
+
 
                                         }
                                     })
@@ -353,5 +351,10 @@ public class WhoHasAssistedMoreMethods extends AppCompatActivity {
                 });
 
 
+    }
+
+    protected void nextActivity(){
+        startActivity(new Intent(getApplicationContext(), WhoHasAssistedMore.class));
+        finish();
     }
 }

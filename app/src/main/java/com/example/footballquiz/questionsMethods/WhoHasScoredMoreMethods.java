@@ -49,8 +49,7 @@ public class WhoHasScoredMoreMethods extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
-                                            startActivity(new Intent(getApplicationContext(), WhoHasScoredMore.class));
-                                            finish();
+
 
                                         }
                                     })
@@ -108,8 +107,7 @@ public class WhoHasScoredMoreMethods extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
-                                            startActivity(new Intent(getApplicationContext(), WhoHasScoredMore.class));
-                                            finish();
+
 
                                         }
                                     })
@@ -134,5 +132,10 @@ public class WhoHasScoredMoreMethods extends AppCompatActivity {
                 });
 
 
+    }
+
+    protected void nextActivity(){
+        startActivity(new Intent(getApplicationContext(), WhoHasScoredMore.class));
+        finish();
     }
 }

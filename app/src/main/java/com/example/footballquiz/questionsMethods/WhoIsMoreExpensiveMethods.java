@@ -269,10 +269,6 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-
-                                            startActivity(new Intent(getApplicationContext(), WhoIsMoreExpensive.class));
-                                            finish();
-
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -328,10 +324,6 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-
-                                            startActivity(new Intent(getApplicationContext(), WhoIsMoreExpensive.class));
-                                            finish();
-
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -355,5 +347,10 @@ public class WhoIsMoreExpensiveMethods extends AppCompatActivity {
                 });
 
 
+    }
+
+    protected void nextActivity(){
+        startActivity(new Intent(getApplicationContext(), WhoIsMoreExpensive.class));
+        finish();
     }
 }

@@ -171,6 +171,7 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
 //                    player2_price.setTextColor(Color.parseColor("#CA0616"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingIncrease();
                     animator1.start();
                     animator2.start();
                     if(animator1.getDuration() >= animator2.getDuration())
@@ -182,9 +183,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingIncrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 
@@ -197,9 +198,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingIncrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
                     //                 Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -219,6 +220,7 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
 //                    player2_price.setTextColor(Color.parseColor("#CA0616"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingDecrease();
                     animator1.start();
                     animator2.start();
                     if(animator1.getDuration() >= animator2.getDuration())
@@ -230,9 +232,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingDecrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 
@@ -245,9 +247,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingDecrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
                     //                Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -267,6 +269,7 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
 //                    player2_price.setTextColor(Color.parseColor("#0FA80A"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingDecrease();
                     animator1.start();
                     animator2.start();
                     if(animator1.getDuration() >= animator2.getDuration())
@@ -278,9 +281,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingDecrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 
@@ -293,9 +296,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingDecrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);
@@ -317,6 +320,7 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                     black_screen2.setVisibility(View.VISIBLE);
                     animator1.start();
                     animator2.start();
+                    ratingIncrease();
                     if(animator1.getDuration() >= animator2.getDuration())
                         animator1.addListener(new AnimatorListenerAdapter() {
                             @Override
@@ -326,9 +330,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingIncrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 
@@ -341,9 +345,9 @@ public class WhoIsMoreExpensive extends WhoIsMoreExpensiveMethods {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        ratingIncrease();
+                                        nextActivity();
                                     }
-                                },0);
+                                },500);
                             }
                         });
 //                  Intent i = new Intent(getApplicationContext(),Who_is_more_expensive_MidMode.class);

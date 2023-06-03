@@ -148,6 +148,7 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                     //                   player2_goals.setTextColor(Color.parseColor("#CA0616"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingIncrease();
                     animator1.start();
                     animator2.start();
                     animator1.addListener(new AnimatorListenerAdapter() {
@@ -155,7 +156,12 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                             player2_goals.setTextColor(Color.parseColor("#CA0616"));
-                            ratingIncrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            }, 500);
                         }
                     });
 
@@ -176,6 +182,7 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
 //                    player2_goals.setTextColor(Color.parseColor("#CA0616"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingDecrease();
                     animator1.start();
                     animator2.start();
                     animator1.addListener(new AnimatorListenerAdapter() {
@@ -183,7 +190,12 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#0FA80A"));
                             player2_goals.setTextColor(Color.parseColor("#CA0616"));
-                            ratingDecrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
                         }
                     });
 //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -203,6 +215,7 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
 //                    player2_goals.setTextColor(Color.parseColor("#0FA80A"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingDecrease();
                     animator1.start();
                     animator2.start();
                     animator1.addListener(new AnimatorListenerAdapter() {
@@ -210,7 +223,12 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#CA0616"));
                             player2_goals.setTextColor(Color.parseColor("#0FA80A"));
-                            ratingDecrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
                         }
                     });
                     //                  Intent i = new Intent(getApplicationContext(),Who_has_scored_more_MidMode.class);
@@ -230,6 +248,7 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                     //                   player2_goals.setTextColor(Color.parseColor("#0FA80A"));
                     black_screen1.setVisibility(View.VISIBLE);
                     black_screen2.setVisibility(View.VISIBLE);
+                    ratingIncrease();
                     animator1.start();
                     animator2.start();
                     animator1.addListener(new AnimatorListenerAdapter() {
@@ -237,7 +256,12 @@ public class WhoHasScoredMore extends WhoHasScoredMoreMethods {
                         public void onAnimationEnd(Animator animation) {
                             player1_goals.setTextColor(Color.parseColor("#CA0616"));
                             player2_goals.setTextColor(Color.parseColor("#0FA80A"));
-                            ratingIncrease();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nextActivity();
+                                }
+                            },500);
                         }
                     });
 
