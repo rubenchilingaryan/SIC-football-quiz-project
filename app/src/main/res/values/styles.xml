@@ -71,5 +71,11 @@
     <style name="circular">
         <item name="cornerSize">50%</item>
     </style>
+    
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_screen_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+            <item name="postSplashScreenTheme">@style/Theme.FootballQuiz</item>
+    </style>
 
 </resources>

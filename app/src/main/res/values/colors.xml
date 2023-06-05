@@ -34,4 +34,5 @@
     <color name="accuracy_76_85">#55E10A</color>
     <color name="accuracy_86_92">#0AE159</color>
     <color name="accuracy_93_100">#0AE1AF</color>
+    <color name="splash_screen_bg">#303C33</color>
 </resources>
