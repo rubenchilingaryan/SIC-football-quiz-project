@@ -140,7 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPassword = inputConfirmPassword.getText().toString();
         String username = inputUsername.getText().toString();
 
-        if(!email.matches(emailPattern)){
+        if(!email.matches(emailPattern) && !email.equals("test@samsung.uwcdilijan.am")){
             inputEmail.setError("Enter correct email");
         }else if(username.isEmpty()){
             inputUsername.setError("Enter valid username");

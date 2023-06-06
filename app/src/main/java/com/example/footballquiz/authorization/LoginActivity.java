@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView signUp;
 
-    EditText inputEmail,inputPassword;
-    Button btnLogin,btnGoogle,btnFacebook;
+    EditText inputEmail, inputPassword;
+    Button btnLogin, btnGoogle, btnFacebook;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog, progressDialogGoogle;
 
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen splashScreen  = SplashScreen.installSplashScreen(this);
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 finish();
             }
         });
@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
     int RC_SIGN_IN = 40;
 
     private void signIn() {
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialogGoogle.show();
 
         Intent intent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(intent,RC_SIGN_IN);
+        startActivityForResult(intent, RC_SIGN_IN);
 
     }
 
@@ -118,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if(requestCode == RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
 
@@ -135,13 +136,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuth(String idToken) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialogGoogle.dismiss();
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             Users users = new Users();
@@ -151,11 +152,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             database.getReference().child("Users").child(users.userId).setValue(users);
-                            Intent intent = new Intent(LoginActivity.this,StartActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, StartActivity.class);
                             startActivity(intent);
                             finish();
-                        }
-                        else{
+                        } else {
                             Toast.makeText(LoginActivity.this, "error", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -167,11 +167,9 @@ public class LoginActivity extends AppCompatActivity {
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
 
-
-        if (!email.matches(emailPattern)) {
+        if (!email.matches(emailPattern) && !email.equals("test@samsung.uwcdilijan.am")) {
             inputEmail.setError("Enter correct email");
-        }
-        else if (password.isEmpty() || password.length() < 6) {
+        } else if (password.isEmpty() || password.length() < 6) {
             inputPassword.setError("Enter proper password");
         } else {
             progressDialog.setMessage("Please wait while you are being logged in...");
@@ -179,36 +177,62 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-                        if (mUser != null && mUser.isEmailVerified()) {
-                            sendUserToStartActivity();
-                            Toast.makeText(LoginActivity.this, "You are successfully logged in", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
-                        }
-                        progressDialog.dismiss();
-                    } else {
-                        progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
+            // Check if the email is the exception email
+            if (email.equals("test@samsung.uwcdilijan.am")) {
+                // Log in without verifying email
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    sendUserToStartActivity();
+                                    Toast.makeText(LoginActivity.this, "You are successfully logged in", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(LoginActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            } else {
+                // Log in with email verification
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+                                    if (mUser != null && mUser.isEmailVerified()) {
+                                        sendUserToStartActivity();
+                                        Toast.makeText(LoginActivity.this, "You are successfully logged in", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                                    }
+                                    progressDialog.dismiss();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(LoginActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
         }
-    }
+
+
+}
 
     private void sendUserToStartActivity() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null && currentUser.isEmailVerified()) {
-            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+        if (currentUser != null) {
+            if (currentUser.isEmailVerified() || currentUser.getEmail().equals("test@samsung.uwcdilijan.am")) {
+                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 
 }
