@@ -51,8 +51,6 @@ public class FragmentAssists extends Fragment implements RecyclerViewInterface {
                 .orderBy("Who has assisted more rating", Query.Direction.DESCENDING)
                 .limit(100);
 
-
-
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
@@ -60,33 +58,31 @@ public class FragmentAssists extends Fragment implements RecyclerViewInterface {
         documentRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
                 String imageUrl = documentSnapshot.getString("profileImageUrl");
-                leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            List<DocumentSnapshot> documents = task.getResult().getDocuments();
-                            Random rand = new Random();
-                            int position = 1;
 
+                leaderboardQuery.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<DocumentSnapshot> documents = task.getResult().getDocuments();
+                        Random rand = new Random();
+                        int position = 1;
 
-                            for (DocumentSnapshot document : documents) {
-                                String username = document.getString("Username");
-                                int rating = document.getLong("Who has assisted more rating").intValue();
+                        for (DocumentSnapshot document : documents) {
+                            String username = document.getString("Username");
+                            int rating = document.getLong("Who has assisted more rating").intValue();
+                            String documentImageUrl = document.getString("profileImageUrl");
 
-                                modesModels.add(new ModesModel(
-                                        Integer.toString(position),
-                                        username,
-                                        Integer.toString(rating),
-                                        imageUrl != null ? imageUrl : "",
-                                        R.drawable.user_icon
-                                ));
+                            modesModels.add(new ModesModel(
+                                    Integer.toString(position),
+                                    username,
+                                    Integer.toString(rating),
+                                    documentImageUrl != null ? documentImageUrl : "",
+                                    R.drawable.user_icon
+                            ));
 
-                                position++;
-                            }
-
-                            // Update the RecyclerView adapter with the leaderboard data
-                            adapter.notifyDataSetChanged();
+                            position++;
                         }
+
+                        // Update the RecyclerView adapter with the leaderboard data
+                        adapter.notifyDataSetChanged();
                     }
                 });
             } else {
@@ -95,8 +91,6 @@ public class FragmentAssists extends Fragment implements RecyclerViewInterface {
         }).addOnFailureListener(e -> {
             // Error retrieving user document
         });
-
-
 
         return view;
     }

@@ -33,6 +33,7 @@ import java.util.Random;
 public class FragmentGuessThePlayer extends Fragment implements RecyclerViewInterface {
 
     ArrayList<ModesModel> modesModels = new ArrayList<>();
+    String currentUserImageUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,47 +54,40 @@ public class FragmentGuessThePlayer extends Fragment implements RecyclerViewInte
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentRef = firestore.collection("users").document(userId);
 
-
-
         documentRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists() && documentSnapshot.contains("profileImageUrl")) {
-                String imageUrl = documentSnapshot.getString("profileImageUrl");
-                leaderboardQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            List<DocumentSnapshot> documents = task.getResult().getDocuments();
-                            Random rand = new Random();
-                            int position = 1;
-
-                            for (DocumentSnapshot document : documents) {
-                                String username = document.getString("Username");
-                                int rating = document.getLong("Guess the player rating").intValue();
-
-                                modesModels.add(new ModesModel(
-                                        Integer.toString(position),
-                                        username,
-                                        Integer.toString(rating),
-                                        imageUrl != null ? imageUrl : "",
-                                        R.drawable.user_icon
-                                ));
-
-                                position++;
-                            }
-
-                            // Update the RecyclerView adapter with the leaderboard data
-                            adapter.notifyDataSetChanged();
-                        }
-                    }
-                });
-            } else {
-                // The user document doesn't exist or doesn't have a profile picture URL
+                currentUserImageUrl = documentSnapshot.getString("profileImageUrl");
             }
+
+            leaderboardQuery.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    List<DocumentSnapshot> documents = task.getResult().getDocuments();
+                    Random rand = new Random();
+                    int position = 1;
+
+                    for (DocumentSnapshot document : documents) {
+                        String username = document.getString("Username");
+                        int rating = document.getLong("Guess the player rating").intValue();
+                        String imageUrl = document.getString("profileImageUrl");
+
+                        modesModels.add(new ModesModel(
+                                Integer.toString(position),
+                                username,
+                                Integer.toString(rating),
+                                imageUrl != null ? imageUrl : "",
+                                R.drawable.user_icon
+                        ));
+
+                        position++;
+                    }
+
+                    // Update the RecyclerView adapter with the leaderboard data
+                    adapter.notifyDataSetChanged();
+                }
+            });
         }).addOnFailureListener(e -> {
             // Error retrieving user document
         });
-
-
 
         return view;
     }
